@@ -1,4 +1,4 @@
-# TeamProject
+# MultiCinema
 
 # 목차
 
