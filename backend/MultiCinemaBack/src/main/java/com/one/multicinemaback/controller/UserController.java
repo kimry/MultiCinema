@@ -13,10 +13,26 @@ public class UserController {
 	
 	@Autowired
 	UserService service;
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public UserDto getUser(String id){
-		System.out.println("BbsController getUser()");
+	
+	@RequestMapping(value = "/login", method =RequestMethod.POST)
+	public String login(String id, String pw) {
+		System.out.println("BbsController login()");
 		UserDto user = service.getUser(id);
-		return user;
+		if(user==null)	
+		{
+			return "id";
+		}
+		else if(user.getPw().equals(pw))
+		{
+			return "success";
+		}
+		return "pw";
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	public String signup(UserDto user) {
+		System.out.println("BbsController signup()");
+		service.addUser(user);
+		return "success";
 	}
 }

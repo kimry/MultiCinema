@@ -8,6 +8,6 @@ import com.one.multicinemaback.dto.UserDto;
 @Mapper
 @Repository
 public interface UserDao {
-	int addUser(UserDto user);
+	void addUser(UserDto user);
 	UserDto getUser(String id);
 }

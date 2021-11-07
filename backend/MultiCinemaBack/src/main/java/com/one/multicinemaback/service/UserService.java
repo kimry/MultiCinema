@@ -14,9 +14,8 @@ public class UserService {
 	@Autowired
 	UserDao dao;
 	
-	public Boolean addUser(UserDto user) {
-		int n = dao.addUser(user);
-		return n>0?true:false;
+	public void addUser(UserDto user) {
+		dao.addUser(user);
 	}
 	public UserDto getUser(String id) {
 		return dao.getUser(id);

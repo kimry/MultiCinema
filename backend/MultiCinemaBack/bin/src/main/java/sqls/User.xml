@@ -4,7 +4,7 @@
 <mapper namespace="com.one.multicinemaback.dao.UserDao">
 
 <select id="addUser" parameterType="com.one.multicinemaback.dto.UserDto">
-	INSERT INTO USERS(id, pw, name, birth, email, phone, auth) VALUES(#{id},#{pw},#{name},#{birth},#{email},#{phone},1)
+	INSERT INTO USERS(id, pw, name, age, email, phone, auth) VALUES(#{id},#{pw},#{name},#{age},#{email},#{phone},1)
 </select>
 <select id="getUser" parameterType="java.lang.String" resultType="com.one.multicinemaback.dto.UserDto">
 	SELECT * FROM USERS WHERE ID=#{id}
