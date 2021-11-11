@@ -16,8 +16,11 @@ public class UserController {
 	
 	@RequestMapping(value = "/login", method =RequestMethod.POST)
 	public String login(String id, String pw) {
-		System.out.println("BbsController login()");
+		
+		System.out.println("UserController login()");
+		
 		UserDto user = service.getUser(id);
+		
 		if(user==null)	
 		{
 			return "id";
@@ -31,8 +34,11 @@ public class UserController {
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String signup(UserDto user) {
-		System.out.println("BbsController signup()");
+		
+		System.out.println("UserController signup()");
+		
 		service.addUser(user);
+		
 		return "success";
 	}
 }
