@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.one.multicinemaback.dto.ActorDto;
 import com.one.multicinemaback.dto.MovieDto;
 import com.one.multicinemaback.dto.MovieScheduleDto;
+import com.one.multicinemaback.dto.SnackBarDto;
 import com.one.multicinemaback.service.ActorService;
 import com.one.multicinemaback.service.MovieScheduleService;
 import com.one.multicinemaback.service.MovieService;
+import com.one.multicinemaback.service.SnackBarService;
 
 @RestController
 public class AdminController {
@@ -23,6 +25,9 @@ public class AdminController {
 
 	@Autowired
 	MovieService mService;
+	
+	@Autowired
+	SnackBarService sService;
 	
 	@RequestMapping(value="/actor", method=RequestMethod.POST)
 	public String addActor(ActorDto actor) {
@@ -50,6 +55,17 @@ public class AdminController {
 		System.out.println("AdminController addMS()");
 		
 		msService.addMS(ms);
+		
+		return "success";
+	}
+	
+	@RequestMapping(value="/snackbar", method=RequestMethod.POST)
+	public String addSnackBar(SnackBarDto product) {
+		
+		System.out.println("AdminController addSnackBar()");
+		
+		sService.addSnackBar(product);
+		
 		return "success";
 	}
 }
