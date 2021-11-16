@@ -23,11 +23,21 @@
 </div>
 <script type="text/javascript">
 movePage('init.html');
+getchatbot();
 function movePage(page){
 	$.ajax({
 		url:page,
 		success:function(resp){
 			$("#content").html(resp);
+		}
+	});
+}
+
+function getchatbot(){
+	$.ajax({
+		url:"chatbot.html",
+		success:function(resp){
+			$("#chatbot").html(resp);
 		}
 	});
 }
