@@ -7,4 +7,14 @@
 	INSERT INTO SNACKBAR(product, content, price) VALUES(#{product},#{content},#{price})
 </insert>
 
+<select id="snackbarlist" parameterType="java.lang.String" resultType="com.one.multicinemaback.dto.SnackBarDto">
+    SELECT * FROM SNACKBAR
+    WHERE CATEGORY=#{category}
+</select>
+
+<select id="snackbardetail" parameterType="java.lang.String" resultType="com.one.multicinemaback.dto.SnackBarDto">
+    SELECT * FROM SNACKBAR
+    WHERE PRODUCT=#{product}
+</select>
+
 </mapper>

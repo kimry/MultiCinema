@@ -1,19 +1,22 @@
 package com.one.multicinemaback.dto;
 
 public class SnackBarDto {
-	private String product;
-	private String content;
-	private int price;
+	
+	String product;
+	String content;
+	int price;
+	String category;
 	
 	public SnackBarDto() {
 		
 	}
-	
-	public SnackBarDto(String product, String content, int price) {
+
+	public SnackBarDto(String product, String content, int price, String category) {
 		super();
 		this.product = product;
 		this.content = content;
 		this.price = price;
+		this.category = category;
 	}
 
 	public String getProduct() {
@@ -40,10 +43,26 @@ public class SnackBarDto {
 		this.price = price;
 	}
 
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	@Override
 	public String toString() {
-		return "SnackBarDto [product=" + product + ", content=" + content + ", price=" + price + "]";
+		return "SnackBarDto [product=" + product + ", content=" + content + ", price=" + price + ", category="
+				+ category + "]";
 	}
 	
 	
+	
+	
+	
+	
+	
+	
+
 }
