@@ -57,6 +57,7 @@ $("#login").click(function(){
 		success:function(resp){
 		//	alert('success');
 		//	alert(JSON.stringify(resp));
+			let id = $("#id").val();
 		
 			if(resp == "id"){
 				alert("존재하지 않는 ID입니다.");				
@@ -66,7 +67,10 @@ $("#login").click(function(){
 			}
 			else{// login 성공!
 				alert($("#id").val() + "님 환영합니다");
-				location.href = "main.html";			
+			
+				sessionStorage.setItem("login", JSON.stringify(id));
+				
+				location.href = "main.html";	
 			}
 		},
 		error:function(){
