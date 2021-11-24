@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,22 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+//html에서 추가하면, parameter를 받을 수 있는 소스 : 추가만 해주면 된다.
+function getURLParams(url) {
+    var result = {};
+    url.replace(/[?&]{1}([^=&#]+)=([^&#]*)/g, function(s, k, v) { result[k] = decodeURIComponent(v); });
+    return result;
+}
+
+var params = getURLParams(location.search);
+$.ajax({
+	url:params.page,
+	success:function(resp){
+		$("#content").html(resp);
+	}
+}); 
+</script>
 
 <!-- Bootstrap mypage 설정 
 <link rel="stylesheet"
@@ -26,28 +43,28 @@
 
 <body>
 <div id="menu" style="background-color:ivory">
-
 <a onclick="movePage('init.html')">MultiCinema</a>&nbsp;
 <a onclick="movePage('movie/movielist.html')">영화</a>&nbsp;
+<a onclick="movePage('snackbar/snackbar.html')">스낵/음료</a>&nbsp;
 <a onclick="movePage('qna/qna.html')">고객센터</a>&nbsp;
 <a onclick="movePage('mypage/mypage.html')">My Page</a>&nbsp;
 <a onclick="movePage('admin/admin.html')">관리자메뉴</a>&nbsp;
 <a onclick="movePage('ticketing/ticketing.html')">예매하기</a>
 </div>
-<div id="content" align="center"></div>
+<div id="content"></div>
 
 <div id="chatbot">
 </div>
 <script type="text/javascript">
-movePage('init.html');
 getchatbot();
 function movePage(page){
-	$.ajax({
+	/* $.ajax({
 		url:page,
 		success:function(resp){
 			$("#content").html(resp);
 		}
-	});
+	}); */ 
+	location.href = "main.html?page=" + page;
 }
 
 function getchatbot(){
@@ -58,10 +75,9 @@ function getchatbot(){
 		}
 	});
 }
-
-let login = sessionStorage.getItem("login");
-let id = JSON.parse(login);
-let idChcek = JSON.parse(login);
+let user = JSON.parse(sessionStorage.getItem("login"));
+let id = user.id
+let idChcek = user.id;
 
 
 </script>

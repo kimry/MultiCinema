@@ -15,21 +15,22 @@ public class UserController {
 	UserService service;
 	
 	@RequestMapping(value = "/login", method =RequestMethod.POST)
-	public String login(String id, String pw) {
+	public UserDto login(String id, String pw) {
 		
 		System.out.println("UserController login()");
 		
 		UserDto user = service.getUser(id);
-		
+		System.out.println(user);
 		if(user==null)	
 		{
-			return "id";
+			return null;
 		}
 		else if(user.getPw().equals(pw))
 		{
-			return "success";
+			user.setPw("");
+			return user;
 		}
-		return "pw";
+		return null;
 	}
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)

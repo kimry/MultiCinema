@@ -10,4 +10,6 @@ import com.one.multicinemaback.dto.UserDto;
 public interface UserDao {
 	void addUser(UserDto user);
 	UserDto getUser(String id);
+	void pwUp(String pw);
+	void emailUp(String email);
 }

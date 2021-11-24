@@ -55,22 +55,14 @@ $("#login").click(function(){
 		type:"post",
 		data:{ id:$("#id").val(), pw:$("#pw").val() },
 		success:function(resp){
-		//	alert('success');
-		//	alert(JSON.stringify(resp));
 			let id = $("#id").val();
-		
-			if(resp == "id"){
-				alert("존재하지 않는 ID입니다.");				
-			}
-			else if(resp == ("pw")){
-				alert("잘못된 PW입니다.")
+			if(resp.length==0){
+				alert("ID나 PW를 다시 확인해주세요");				
 			}
 			else{// login 성공!
 				alert($("#id").val() + "님 환영합니다");
-			
-				sessionStorage.setItem("login", JSON.stringify(id));
-				
-				location.href = "main.html";	
+				sessionStorage.setItem("login", JSON.stringify(resp));
+				location.href = "main.html?page=init.html";	
 			}
 		},
 		error:function(){
