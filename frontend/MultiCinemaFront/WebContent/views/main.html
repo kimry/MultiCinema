@@ -46,16 +46,24 @@ $.ajax({
 <a onclick="movePage('init.html')">MultiCinema</a>&nbsp;
 <a onclick="movePage('movie/movielist.html')">영화</a>&nbsp;
 <a onclick="movePage('snackbar/snackbar.html')">스낵/음료</a>&nbsp;
-<a onclick="movePage('qna/qna.html')">고객센터</a>&nbsp;
+<a onclick="movePage('bbs/bbslist.html')">고객센터</a>&nbsp;
 <a onclick="movePage('mypage/mypage.html')">My Page</a>&nbsp;
-<a onclick="movePage('admin/admin.html')">관리자메뉴</a>&nbsp;
-<a onclick="movePage('ticketing/ticketing.html')">예매하기</a>
+<a onclick="movePage('ticketing/ticketing.html')">예매하기</a>&nbsp;
+<div id="menuAdmin"></div>
 </div>
 <div id="content"></div>
 
 <div id="chatbot">
 </div>
 <script type="text/javascript">
+let user = JSON.parse(sessionStorage.getItem("login"));
+let id = user.id
+let idChcek = user.id;
+var temp;
+if(user.auth==0){
+	temp="<a onclick="+'"movePage('+"'admin/admin.html')"+">관리자메뉴</a>";
+	$("#menuAdmin").html(temp);
+}
 getchatbot();
 function movePage(page){
 	/* $.ajax({
@@ -75,11 +83,6 @@ function getchatbot(){
 		}
 	});
 }
-let user = JSON.parse(sessionStorage.getItem("login"));
-let id = user.id
-let idChcek = user.id;
-
-
 </script>
 </body>
 </html>
