@@ -87,31 +87,45 @@ $("#bbslist").click(function() {
 });
 
 $("#bbsanswer").click(function() {
-	movePage("bbs/bbsanswer.html&seq=" + seq);	
+	if(user.auth==0){
+		movePage("bbs/bbsanswer.html&seq=" + seq);
+	}
+	else{
+		alert("운영자가 아닙니다.");
+	}
 });
 
 $("#bbsupdate").click(function() {
-	movePage("bbs/bbsupdate.html&seq=" + seq);	
+	if(user.id==$("#id").text()){
+		movePage("bbs/bbsupdate.html&seq=" + seq);
+	}
+	else{
+		alert("작성자가 아닙니다.");
+	}
 });
 
 $("#bbsdelete").click(function() {
-	
-	$.ajax({
-		url:"http://localhost:3000/bbsdelete",
-		type:"get",
-		data:{ 'seq':seq },
-		success:function(resp){
-			if(resp == "YES"){
-				alert('글이 삭제되었습니다');
-			}else{
-				alert('답글이 삭제되지 않았습니다');
-			}			
-			movePage("bbs/bbslist.html");
-		},
-		error:function(){
-			alert('error');
-		}
-	});
+	if(user.id==$("#id").text()){
+		$.ajax({
+			url:"http://localhost:3000/bbsdelete",
+			type:"get",
+			data:{ 'seq':seq },
+			success:function(resp){
+				if(resp == "YES"){
+					alert('글이 삭제되었습니다');
+				}else{
+					alert('답글이 삭제되지 않았습니다');
+				}			
+				movePage("bbs/bbslist.html");
+			},
+			error:function(){
+				alert('error');
+			}
+		});
+	}
+	else{
+		alert("작성자가 아닙니다.");
+	}
 	
 });
 
