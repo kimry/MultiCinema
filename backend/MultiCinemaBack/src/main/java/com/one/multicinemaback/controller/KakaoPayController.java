@@ -24,16 +24,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.one.multicinemaback.dto.KakaoPayDto;
-import com.one.multicinemaback.service.KakaoPayService;
+import com.one.multicinemaback.dto.SbPayDto;
+import com.one.multicinemaback.service.SbPayService;
 
 @RestController
 public class KakaoPayController {
 	
 	@Autowired
-	KakaoPayService kservice;
+	SbPayService sbservice;
 
-	@RequestMapping(value = "/kakaopay", method =RequestMethod.GET)
+	@RequestMapping(value = "/sbkakaopay", method =RequestMethod.GET)
 	public String kakaopay(String id, String product, String count, String payprice) throws UnsupportedEncodingException {
 		System.out.println("KakaoPayController kakaopay()");
 		System.out.println(id);
@@ -46,7 +46,7 @@ public class KakaoPayController {
 			conn.setRequestProperty("Authorization", "KakaoAK 704f7b7e7e27e8835b13944d7744c8c0");
 			conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 			conn.setDoOutput(true);
-			String parameter = "cid=TC0ONETIME&partner_order_id=1&partner_user_id=MultiCinema&item_name=" + pname + "&quantity=" + count + "&total_amount=" + payprice + "&vat_amount=200&tax_free_amount=0&approval_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/kakaoPaySuccess.html?id=" + id + "&fail_url=https://localhost/fail&cancel_url=https://localhost/cancel";
+			String parameter = "cid=TC0ONETIME&partner_order_id=1&partner_user_id=MultiCinema&item_name=" + pname + "&quantity=" + count + "&total_amount=" + payprice + "&vat_amount=200&tax_free_amount=0&approval_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/SbPaySuccess.html?id=" + id + "&fail_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/SbPayFail.html&cancel_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/SbPayFail.html";
 			OutputStream give = conn.getOutputStream();
 			DataOutputStream datagive = new DataOutputStream(give);
 			datagive.writeBytes(parameter);
@@ -97,25 +97,40 @@ public class KakaoPayController {
 		return "redirect:" + url;
 	}
 	
-	@RequestMapping(value = "/insertpay", method = RequestMethod.GET)
-	public String insertpay(KakaoPayDto dto) {
+	@RequestMapping(value = "/insertsbpay", method = RequestMethod.GET)
+	public String insertpay(SbPayDto dto) {
 		System.out.println("KakaoPayController insertpay()");
 		System.out.println(dto);
 		
-		kservice.insertpay(dto);
+		sbservice.insertsbpay(dto);
 		
 		return "success";
 	}
 	
-	@RequestMapping(value = "/getspay", method = RequestMethod.POST)
-	public KakaoPayDto getspay(String tid) {
+	@RequestMapping(value = "/getsbpay", method = RequestMethod.POST)
+	public SbPayDto getspay(String tid) {
 		System.out.println("KakaoPayController getspay()");
 		System.out.println(tid);
 		
-		KakaoPayDto dto = kservice.getspay(tid);
+		SbPayDto dto = sbservice.getsbpay(tid);
 		
 		System.out.println(dto);
 		
 		return dto;
+	}
+	
+	@RequestMapping(value = "/delsbpay", method = RequestMethod.POST)
+	public String delsbpay(String tid) {
+		
+		System.out.println(tid);
+		
+		boolean b = sbservice.delsbpay(tid);
+		
+		if(b == true) {
+			return "success";
+		}else {
+			return "fail";
+		}
+		
 	}
 }

@@ -2,22 +2,25 @@ package com.one.multicinemaback.dto;
 
 public class SbPayDto {
 	
-	private String tid;
-	private String id;
-	private String product;
-	private int count;
-	private int payprice;
+	String tid;
+	String id;
+	String product;
+	int count;
+	int payprice;
+	String sbdate;
 	
 	public SbPayDto() {
+		
 	}
 
-	public SbPayDto(String tid, String id, String product, int count, int payprice) {
+	public SbPayDto(String tid, String id, String product, int count, int payprice, String sbdate) {
 		super();
 		this.tid = tid;
 		this.id = id;
 		this.product = product;
 		this.count = count;
 		this.payprice = payprice;
+		this.sbdate = sbdate;
 	}
 
 	public String getTid() {
@@ -59,6 +62,23 @@ public class SbPayDto {
 	public void setPayprice(int payprice) {
 		this.payprice = payprice;
 	}
+
+	public String getSbdate() {
+		return sbdate;
+	}
+
+	public void setSbdate(String sbdate) {
+		this.sbdate = sbdate;
+	}
+
+	@Override
+	public String toString() {
+		return "SbPayDto [tid=" + tid + ", id=" + id + ", product=" + product + ", count=" + count + ", payprice="
+				+ payprice + ", sbdate=" + sbdate + "]";
+	}
+
+	
+	
 	
 
 }

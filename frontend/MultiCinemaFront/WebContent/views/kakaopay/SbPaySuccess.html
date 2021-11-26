@@ -90,6 +90,14 @@ let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
                
            </td>
        </tr>
+       <tr>
+           <td>
+               결제시간
+           </td>
+           <td id="sbdate" colspan="3">
+           
+           </td>
+       </tr>
 </table>
 <br>
 <div align="center">
@@ -123,15 +131,17 @@ $.ajax({
 
 
 $.ajax({
-	url:"http://localhost:3000/getspay",
+	url:"http://localhost:3000/getsbpay",
 	type:"post",
 	data:{ "tid": tid },
 	success:function(spay){
 	//	alert(JSON.stringify(spay));
+	//    alert(spay.sbdate);
 		
 		$("#pprice").append(spay.payprice + "원");
 		$("#payprice").append(spay.payprice + "원");
 		$("#tid").append(spay.tid);
+		$("#sbdate").append(spay.sbdate);
 		
   
 	},

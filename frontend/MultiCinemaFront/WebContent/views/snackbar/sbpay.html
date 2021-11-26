@@ -1,4 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
 <meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
 <h2 align="center">결제 페이지</h2>
 <div align="center">
 <table border="1" width="1200" height="500">
@@ -65,13 +71,13 @@ $("#pprice").html(str3);
 
 function sbpay(){
 	$.ajax({
-		url:"http://localhost:3000/kakaopay",
+		url:"http://localhost:3000/sbkakaopay",
 		type:"get",
 		data:{ "id":id, "product":p_name, "count":p_count, "payprice":p_price, },
 		dataType:'json',
 		success:function(data){
 		//	alert("success");
-		//	alert(JSON.stringify(data));
+			alert(JSON.stringify(data));
 		//	alert(data.tid);
 			/*
 			var box = data.next_redirect_pc_url;
@@ -80,17 +86,17 @@ function sbpay(){
 			//localStorage.setItem('tid', data.tid);
 			tid = data.tid;
 			sessionStorage.setItem("tid", data.tid);
-			insertpay(tid, id, p_name, p_count, p_price);
+			insertsbpay(tid, id, p_name, p_count, p_price);
 			location.href = data.next_redirect_pc_url;
 			
 			
 			
-			function insertpay(tid, id, product, count, payprice){
+			function insertsbpay(tid, id, product, count, payprice){
 				
 				//alert(data.tid);
 				
 				$.ajax({
-					url:"http://localhost:3000/insertpay",
+					url:"http://localhost:3000/insertsbpay",
 					type:"get",
 					data:{ 'tid':tid, "id":id, "product":product, "count":count, "payprice":payprice, },
 					success:function(resp){
@@ -114,3 +120,6 @@ function sbpay(){
 }
 
 </script>
+
+</body>
+</html>

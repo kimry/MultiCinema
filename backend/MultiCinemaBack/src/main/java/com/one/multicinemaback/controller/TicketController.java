@@ -110,7 +110,7 @@ public class TicketController {
 		List<TicketDto> list = tservice.getPastList(id);
 		return list;
 	}
-	
+	/*
 	// My SbPay
 	@RequestMapping(value = "/getSbPayList", method = RequestMethod.GET)
 	public List<SbPayDto> getSbPayList(String id) {
@@ -121,4 +121,5 @@ public class TicketController {
 		System.out.println(list);
 		return list;
 	}
+	*/
 }

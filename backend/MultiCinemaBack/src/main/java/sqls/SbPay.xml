@@ -3,11 +3,16 @@
 
 <mapper namespace="com.one.multicinemaback.dao.SbPayDao">
 
+<insert id="insertsbpay" parameterType="com.one.multicinemaback.dto.SbPayDto">
+    INSERT INTO SBPAY(TID, ID, PRODUCT, COUNT, PAYPRICE, SBDATE) VALUES(#{tid},#{id},#{product},#{count},#{payprice},NOW())
+</insert>
 
-<select id="getSbPayList" parameterType="String" resultType="com.one.multicinemaback.dto.SbPayDto">
-	SELECT *
-	FROM SBPAY
-	WHERE id=#{id}
+<select id="getsbpay" parameterType="java.lang.String" resultType="com.one.multicinemaback.dto.SbPayDto">
+    SELECT * FROM SBPAY WHERE TID=#{tid}
 </select>
+
+<delete id="delsbpay" parameterType="java.lang.String">
+    DELETE FROM SBPAY WHERE TID=#{tid}
+</delete>
 
 </mapper>
