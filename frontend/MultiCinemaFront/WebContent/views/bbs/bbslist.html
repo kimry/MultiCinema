@@ -71,8 +71,6 @@
 function movewrite(page){
 	movePage(page + "&id=" + id);
 }
-//let login = sessionStorage.getItem("login");
-//alert(login);
 
 getBbslist(0);
 getBbsCount();
@@ -86,14 +84,6 @@ function getBbslist( page ) {
 		type:"get",
 		data:{ 'choice':choice, 'search':search, 'page':page },
 		success:function(list){
-		//	alert('success');
-			// session
-		//	let login = JSON.parse(sessionStorage.getItem("login"));
-		//	alert(login.id);
-			
-		//	alert(JSON.stringify(list));
-		//	alert(list.length);
-		
 			$("#blist").html("");
 			$.each(list, function (i, item) {
 				let str = "<tr>";
@@ -126,7 +116,6 @@ function getBbsCount() {
 		type:"get",
 		data:{ 'choice':$("#_choice").val(), 'search':$("#_search").val(), 'page':0 },
 		success:function(count){
-		//	alert(count);
 			loadPage(count);
 		}
 	});
@@ -160,7 +149,6 @@ function loadPage( totalCount ) {
 		last:'<span sris-hidden="true">»</span>',
 		initiateStartPageClick:false,		// onPageClick 자동호출이 되도록 하지 않는다
 		onPageClick:function(event, page){ // 페이지 번호를 클릭
-		//	alert(page);			1 2 3 4
 			getBbslist(page - 1);	// 0 1 2 3
 		} 
 	});	

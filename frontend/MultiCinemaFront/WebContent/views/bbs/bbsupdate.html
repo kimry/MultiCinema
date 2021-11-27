@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -50,7 +49,6 @@
 
 <script type="text/javascript">
 var seq = params.seq;
-//alert(seq);
 $("#seq").val(seq);
 
 $.ajax({
@@ -74,8 +72,6 @@ $("#btn").click(function() {
 		type:"get",
 		data:$("#frm").serialize(),
 		success:function(resp){
-		//	alert('success');
-		
 			if(resp == "YES"){
 				alert('글을 변경했습니다');
 			}else{

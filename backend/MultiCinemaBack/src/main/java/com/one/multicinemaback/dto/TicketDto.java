@@ -1,7 +1,7 @@
 package com.one.multicinemaback.dto;  
 
 public class TicketDto {
-	private int tnum;	
+	private String tid;	
 	private int msnum; 
 	private String id;		// 유저 id
 	private String title;	// 영화 제목
@@ -15,10 +15,10 @@ public class TicketDto {
 	public TicketDto() {
 	}
 
-	public TicketDto(int tnum, int msnum, String id, String title, String bdate, String sdate, String edate,
+	public TicketDto(String tid, int msnum, String id, String title, String bdate, String sdate, String edate,
 			String theater, String snum, int price) {
 		super();
-		this.tnum = tnum;
+		this.tid = tid;
 		this.msnum = msnum;
 		this.id = id;
 		this.title = title;
@@ -30,12 +30,12 @@ public class TicketDto {
 		this.price = price;
 	}
 
-	public int getTnum() {
-		return tnum;
+	public String getTid() {
+		return tid;
 	}
 
-	public void setTnum(int tnum) {
-		this.tnum = tnum;
+	public void setTid(String tid) {
+		this.tid = tid;
 	}
 
 	public int getMsnum() {
@@ -112,9 +112,11 @@ public class TicketDto {
 
 	@Override
 	public String toString() {
-		return "TicketDto [tnum=" + tnum + ", msnum=" + msnum + ", id=" + id + ", title=" + title + ", bdate=" + bdate
+		return "TicketDto [tid=" + tid + ", msnum=" + msnum + ", id=" + id + ", title=" + title + ", bdate=" + bdate
 				+ ", sdate=" + sdate + ", edate=" + edate + ", theater=" + theater + ", snum=" + snum + ", price="
 				+ price + "]";
 	}
+
+	
 	
 }

@@ -100,7 +100,12 @@
     WHERE SEQ=#{seq}
 </update>
 
-
+<select id="mybbslist" parameterType="String" resultType="com.one.multicinemaback.dto.BbsDto">
+	SELECT *
+	FROM BBS
+	WHERE ID=#{id}
+	ORDER BY wdate DESC;
+</select>
 
 </mapper>
 

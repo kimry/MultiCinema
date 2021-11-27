@@ -15,4 +15,10 @@
     DELETE FROM SBPAY WHERE TID=#{tid}
 </delete>
 
+<select id="getSbPayList" parameterType="String" resultType="com.one.multicinemaback.dto.SbPayDto">
+	SELECT *
+	FROM SBPAY
+	WHERE id=#{id}
+</select>
+
 </mapper>

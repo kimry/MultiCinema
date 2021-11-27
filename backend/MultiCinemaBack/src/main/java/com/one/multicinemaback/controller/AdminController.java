@@ -29,6 +29,7 @@ public class AdminController {
 	@Autowired
 	SnackBarService sService;
 	
+	//배우 추가
 	@RequestMapping(value="/actor", method=RequestMethod.POST)
 	public String addActor(ActorDto actor) {
 		
@@ -39,6 +40,7 @@ public class AdminController {
 		return "success";
 	}
 	
+	//영화 추가
 	@RequestMapping(value="/movie", method=RequestMethod.POST)
 	public String addMovie(MovieDto movie) {
 		
@@ -49,6 +51,7 @@ public class AdminController {
 		return "success";
 	}
 	
+	//영화 스케쥴 추가
 	@RequestMapping(value="/ms", method=RequestMethod.POST)
 	public String addMS(MovieScheduleDto ms) {
 		
@@ -59,6 +62,7 @@ public class AdminController {
 		return "success";
 	}
 	
+	//스낵바 추가
 	@RequestMapping(value="/snackbar", method=RequestMethod.POST)
 	public String addSnackBar(SnackBarDto product) {
 		

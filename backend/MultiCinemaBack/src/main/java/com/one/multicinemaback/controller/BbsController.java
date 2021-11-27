@@ -3,7 +3,6 @@ package com.one.multicinemaback.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,6 +46,7 @@ public class BbsController {
 		return service.getbbscount(param);
 	}
 	
+	//글 쓰기
 	@RequestMapping(value = "/bbswrite", method = RequestMethod.POST)
 	public String bbswrite(BbsDto bbs) {
 		System.out.println("BbsController bbswrite()");
@@ -60,6 +60,7 @@ public class BbsController {
 		return "NO";
 	}
 	
+	//세부내용 전송
 	@RequestMapping(value = "/bbsdetail", method = RequestMethod.GET)
 	public BbsDto bbsdetail(int seq) {
 		System.out.println("BbsController bbsdetail()");
@@ -71,15 +72,12 @@ public class BbsController {
 		return dto;
 	}
 	
+	//답글 쓰기
 	@RequestMapping(value = "/bbsanswer", method = RequestMethod.POST)
 	public String bbsanswer(BbsDto dto) {
 		System.out.println("BbsController bbsanswer()");
 		
-		//System.out.println(dto);
-		
 		boolean up = service.answerup(dto);
-		
-		
 		
 		boolean in = service.answerin(dto);
 		
@@ -91,6 +89,7 @@ public class BbsController {
 			
 	}
 	
+	//글 수정
 	@RequestMapping(value = "/bbsupdate", method = RequestMethod.GET)
 	public String bbsupdate(BbsDto dto) {
 		System.out.println("BbsController bbsupdate()");
@@ -107,6 +106,7 @@ public class BbsController {
 		
 	}
 	
+	//글 지우기
 	@RequestMapping(value = "/bbsdelete", method = RequestMethod.GET)
 	public String bbsdelete(BbsDto dto) {
 		System.out.println("BbsController bbsdelete()");
@@ -118,6 +118,17 @@ public class BbsController {
 		}
 		
 		return "NO";
+		
+	}
+	
+	@RequestMapping(value = "/mybbslist", method = RequestMethod.GET)
+	public List<BbsDto> mybbslist(String id){
+		System.out.println("BbsController mybbslist()");
+		System.out.println(id);
+		
+		List<BbsDto> list  = service.mybbslist(id);
+		System.out.println(list);
+		return list;
 		
 	}
 

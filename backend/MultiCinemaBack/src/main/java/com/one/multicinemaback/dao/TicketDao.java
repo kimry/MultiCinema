@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.one.multicinemaback.dto.TicketDto;
-import com.one.multicinemaback.dto.UserDto;
 
 @Mapper
 @Repository
@@ -14,5 +13,9 @@ public interface TicketDao {
 
 	List<TicketDto> getTodayList(String id);
 	List<TicketDto> getPastList(String id);
-	List<TicketDto> getSeatList(TicketDto dto);
+	List<TicketDto> getSeatList(int msnum);
+	
+	void inserttipay(TicketDto dto);
+	TicketDto gettipay(TicketDto dto);
+	boolean deltipay(TicketDto dto);
 }

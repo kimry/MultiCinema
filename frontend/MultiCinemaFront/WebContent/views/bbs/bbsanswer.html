@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -87,8 +86,6 @@ $.ajax({
 	type:'get',
 	data:{ 'seq':seq },
 	success:function(data){
-	//	alert('success');
-	//	alert( JSON.stringify(data));
 		$("#id").text( data.id );
 		$("#title").text( data.title );
 		$("#wdate").text( data.wdate );
@@ -119,7 +116,6 @@ $("#btn").click(function() {
 		type:"post",
 		data:$("#frm").serialize(),
 		success:function(resp){
-		//	alert('success');
 		
 			if(resp == "YES"){
 				alert('답글이 추가되었습니다');

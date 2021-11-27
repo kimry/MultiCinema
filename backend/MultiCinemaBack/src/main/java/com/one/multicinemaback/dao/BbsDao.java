@@ -30,5 +30,6 @@ public interface BbsDao extends Serializable {
 	boolean updateBbs(BbsDto dto);
 	
 	boolean deleteBbs(BbsDto dto);
-
+	
+	List<BbsDto> mybbslist(String id);
 }

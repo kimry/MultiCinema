@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
@@ -53,21 +51,16 @@
 
 var seq = params.seq;
 var page = params.page;
-//alert(seq);
-//alert(page);
 
 $.ajax({
 	url:'http://localhost:3000/bbsdetail',
 	type:'get',
 	data:{ 'seq':seq },
 	success:function(data){
-	//	alert('success');
-	//	alert( JSON.stringify(data));
 		$("#id").text( data.id );
 		$("#title").text( data.title );
 		$("#wdate").text( data.wdate );
 		$("#readcount").text( data.readcount );
-		//alert(data.content);
 		$("#contents").val( data.content );	// textarea
 		
 		// login한 id와 다를 때는 수정과 삭제를 할 수 없도록 처리  

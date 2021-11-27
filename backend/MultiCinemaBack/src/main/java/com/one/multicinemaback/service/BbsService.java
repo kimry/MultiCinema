@@ -52,5 +52,9 @@ public class BbsService {
 	public boolean deleteBbs(BbsDto dto) {
 		return dao.deleteBbs(dto);
 	}
-
+	
+	public List<BbsDto> mybbslist(String id) {
+		return dao.mybbslist(id);
+	}
+	
 }

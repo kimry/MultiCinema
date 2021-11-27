@@ -1,6 +1,5 @@
 <meta charset="UTF-8">
 <title>My Page</title>
-
 <body>
 	<div>
 	<h1 align="center">My page </h1>
@@ -62,8 +61,9 @@
 			<div align="center" class="tab-pane fade" id="upUser">
 			
 			<div id="userChcek">
+			<br><br>
 			<h2>회원정보를 수정하시려면 비밀번호를 입력하셔야 합니다.</h2>
-			<p>회원님의 개인정보 보호를 위한 본인 확인 절차이오니, MultiCinema 회원 로그인 시 사용하는 비밀번호를 입력해주세요.</p>
+			<p>회원님의 개인정보 보호를 위한 본인 확인 절차이오니, MultiCinema 회원 로그인 시 사용하는 비밀번호를 입력해주세요.</p><br>
 			&nbsp; &nbsp; 
 			아이디 : <input id="idChcek" type="text" readonly="readonly" size="30px"> <br><br>
 			비밀번호 : <input id="pwChcek" type="password" placeholder="비밀번호를 입력해주세요." size="30px">
@@ -176,17 +176,17 @@
 				<tr>
 					<td>
 						<div align="center">
-          					<a href="" title="기대되는 영화">
+          					<a href="main.html?page=ticketing/ticketing.html" title="기대되는 영화">
 	            			<h3>기대되는 영화</h3>
-	              			<span>보고 싶은 영화들을 미리 <br>담아두고 싶다면?</span>
+	              			<span>보고 싶은 영화들을 지금 <br>예매하고 싶다면?</span>
            					 </a>
        					</div>
 					</td>
 					<td>
 						<div align="center">
-          					<a href="" title="골라먹는 스낵바">
-	            			<h3>골라먹는 스낵바</h3>
-	              			<span>스낵바와 함께 재미는 2배<br>메뉴가 궁금하다면?</span>
+          					<a href="main.html?page=bbs/bbslist.html" title="고객센터 문의">
+	            			<h3>고객센터 문의</h3>
+	              			<span>불편사항과 문의사항을 남겨주시면<br>친절히 답변드리겠습니다.</span>
            					 </a>
        					</div>
 					</td>
@@ -224,7 +224,6 @@
 				
 				</table>
 			
-			<!-- 리뷰, 고객센터 -->
 			<br><br>
 			<div align="center">			
 			<table border="2"><col width="300px"><col width="300px">
@@ -239,7 +238,7 @@
 					</td>
 					<td>
 						<div align="center">
-          					<a href="" title="고객센터 문의">
+          					<a href="main.html?page=bbs/bbslist.html" title="고객센터 문의">
 	            			<h3>고객센터 문의</h3>
 	              			<span>불편사항과 문의사항을 남겨주시면<br>친절히 답변드리겠습니다.</span>
            					 </a>
@@ -251,32 +250,104 @@
 			
 			
 			</div>
-			<div class="tab-pane fade" id="qna">MY Q&A 메뉴</div>
-			
-			<div class="tab-pane fade" id="snackBar">
-			
+			<div class="tab-pane fade" id="qna">
+
 				<div>
-				<h4>My SnackBar</h4>
+					<h4>MY Q&A 메뉴</h4>
+					<br>
+					<br>
+					<table class="table table-striped table-hover">
+						<col width="100px">
+						<col width="300px">
+						<col width="100px">
+						<col width="200px">
+						<thead>
+							<tr align="center">
+								<th>번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>작성일</th>
+							</tr>
+						</thead>
+						<tbody id="myblist" align="center">
+						</tbody>
+					</table>
+					<br>
+					<br>
+					<div align="center">
+						<table border="2">
+							<col width="300px">
+							<tr>
+								<td>
+									<div align="center">
+										<a href="main.html?page=bbs/bbslist.html" title="고객센터 문의">
+											<h3>고객센터 문의</h3> <span>불편사항과 문의사항을 남겨주시면<br>친절히
+												답변드리겠습니다.
+										</span>
+										</a>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
 				</div>
-				<br><br>
-				<table class="table table-striped table-hover">
-				<col width="100px"><col width="300px"><col width="100px"><col width="200px">
-					<thead>
-						<tr align="center">
-							<th>번호</th>
-							<th>상품</th>
-							<th>수량</th>
-							<th>금액</th>
-						</tr>
-					</thead>
-				<tbody id="slist" align="center">
-				</tbody>
-				
-				</table>
-			
+			</div>
+
+				<div class="tab-pane fade" id="snackBar">
+
+					<div>
+						<h4>My SnackBar</h4>
+					</div>
+					<br> <br>
+					<table class="table table-striped table-hover">
+						<col width="100px">
+						<col width="300px">
+						<col width="100px">
+						<col width="200px">
+						<thead>
+							<tr align="center">
+								<th>번호</th>
+								<th>상품</th>
+								<th>수량</th>
+								<th>금액</th>
+								<th>구매일</th>
+							</tr>
+						</thead>
+						<tbody id="slist" align="center">
+						</tbody>
+					</table>
+
+					<br> <br>
+					<div align="center">
+						<table border="2">
+							<col width="300px">
+							<col width="300px">
+							<tr>
+								<td>
+									<div align="center">
+										<a href="main.html?page=snackbar/snackbar.html"
+											title="골라먹는 스낵바">
+											<h3>골라먹는 스낵바</h3> <span>스낵바와 함께 재미는 2배<br>메뉴가
+												궁금하다면?
+										</span>
+										</a>
+									</div>
+								</td>
+								<td>
+									<div align="center">
+										<a href="main.html?page=bbs/bbslist.html" title="고객센터 문의">
+											<h3>고객센터 문의</h3> <span>불편사항과 문의사항을 남겨주시면<br>친절히
+												답변드리겠습니다.
+										</span>
+										</a>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
 
 <script type="text/javascript">
@@ -476,7 +547,7 @@ function getSbPayList() {
 			if(list.length == 0){
 				let no =  "<tr>"
 				
-					no += "<td colspan='4'>" 
+					no += "<td colspan='5'>" 
 					no += "<p align='center'>" + '***구매하신 내역이 없습니다.***' + "</p>";
 					no += "</td>"
 					no += "</tr>"
@@ -487,10 +558,11 @@ function getSbPayList() {
 					
 					let str = "<tr>";
 					
-					str += "<td>" + (i + 1) + "</td>";
+					str += "<td>" + list[i].tid + "</td>";
 					str += "<td>" + list[i].product + "</td>";
 					str += "<td>" + list[i].count + "</td>";
 					str += "<td>" + list[i].payprice + "원" +"</td>";
+					str += "<td>" + list[i].sbdate +"</td>";
 					
 					str += "</tr>";
 					$("#slist").append(str);
@@ -538,7 +610,7 @@ $("#upBtn").click(function () {
 				$("#phone").text( data.phone );	// textarea
 				
 				alert('개인정보 수정이 완료되었습니다.');
-				location.href = "main.html";
+				location.reload();
 				
 			},
 			error:function(){
@@ -567,30 +639,53 @@ if($(this).val()== '1'){ //직접입력일 경우
 }); 
 
 
-
-/*  
-// 변경 버튼
-$("#pwUp").click(function () {	
-	$("#pwNew").show(); // 비밀번호 변경 클릭 시 1차, 2차 수정 버튼
+mygetBbslist();
+function mygetBbslist() {
 	$.ajax({
-		url:"http://localhost:3000/pwUp",
-		type:"post",
-		data:{'id':id, pw:$("#pwNew1").val()},
-		success:function(data){
-			alert(pw);
-			alert($("#pwNew1").val());
-			alert($("#pwNew2").val());
+		url:'http://localhost:3000/mybbslist',
+		type:"get",
+		data:{ 'id':id },
+		success:function(list){
+		//	alert('success');
+			// session
+		//	let login = JSON.parse(sessionStorage.getItem("login"));
+		//	alert(login.id);
+			$("#myblist").html("");
 			
-			if (pw == $("#pwNew1").val() == $("#pwNew2").val()){
-				
+			if(list.length == 0){
+				let no =  "<tr>"
+					
+					no += "<td colspan='8'>" 
+					no += "<p align='center'>" + '***작성하신 글이 없습니다.***' + "</p>";
+					no += "</td>"
+					no += "</tr>"
+				$("#myblist").append(no);
 			}
+			
+			for(i = 0;i < list.length; i++){
+				
+				let str = "<tr>";
+				str += "<td align='center'>" + (i + 1) + "</td>";
+				if(list[i].del == 0){
+					str += "<td>" + "<a href='main.html?page=bbs/bbsdetail.html&seq=" + list[i].seq + "'>" + list[i].title + "</a>" + "</td>";
+				}else{
+					str += "<td align='center'><font color='red'>***  이 글은 작성자의 의해서 삭제되었습니다  ***</font></td>";
+				}
+				
+		 		str += "<td align='center'>" + list[i].id + "</td>";
+				str += "<td align='center'>" + list[i].wdate + "</td>"; 
+				str += "</tr>";
+				
+				$("#myblist").append(str);
+			}	
+			
 		},
 		error:function(){
 			alert('error');
 		}
-	});
-});
- */
+	});	
+}
+
 
 
 </script>

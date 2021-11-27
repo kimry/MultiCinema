@@ -1,6 +1,6 @@
 package com.one.multicinemaback.service;
 
-import java.util.List; 
+import java.util.List;  
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,19 @@ public class TicketService {
 		return dao.getPastList(id);
 	}
 	
-	public List<TicketDto> getSeatList(TicketDto dto){
-		return dao.getSeatList(dto);
+	public List<TicketDto> getSeatList(int msnum){
+		return dao.getSeatList(msnum);
+	}
+	
+	public void inserttipay(TicketDto dto) {
+		dao.inserttipay(dto);
+	}
+	
+	public TicketDto gettipay(TicketDto dto) {
+		return dao.gettipay(dto);
+	}
+	
+	public boolean deltipay(TicketDto dto) {
+		return dao.deltipay(dto);
 	}
 }

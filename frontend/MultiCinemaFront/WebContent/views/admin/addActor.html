@@ -27,9 +27,7 @@ function addActor(){
 		type:"post",
 		data:{ actor:$("#actor").val(), age:$("#age").val(), country:$("#country").val(), career:$("#career").val()},
 		success:function(resp){
-		
 			alert("배우등록이 완료되었습니다.");
-		
 		},
 		error:function(){
 			alert("배우등록이 실패하였습니다.");

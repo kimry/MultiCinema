@@ -23,9 +23,7 @@ function addActor(){
 		type:"post",
 		data:{ product:$("#product").val(), content:$("#contents").val(), price:$("#price").val()},
 		success:function(resp){
-		
 			alert("상품등록이 완료되었습니다.");
-		
 		},
 		error:function(){
 			alert("상품등록이 실패하였습니다.");
