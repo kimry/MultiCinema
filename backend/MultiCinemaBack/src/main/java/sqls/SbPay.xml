@@ -19,6 +19,7 @@
 	SELECT *
 	FROM SBPAY
 	WHERE id=#{id}
+	ORDER BY SBDATE DESC;
 </select>
 
 </mapper>
