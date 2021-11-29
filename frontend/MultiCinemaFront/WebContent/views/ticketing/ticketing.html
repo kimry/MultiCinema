@@ -12,11 +12,8 @@ $.datepicker.setDefaults({
     dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
     showMonthAfterYear: true,
     yearSuffix: '년',
- 	 // minDate: "+1D",
  	minDate: "0",
  	  onSelect: function (dateText, inst) {
- 		  	// console.log($('#tkdateR').val());
- 		    //  console.log(dateText);
  			$('#tkdateR').val(dateText.substring(4,14)); 
  			
  			$.ajax({
@@ -28,7 +25,6 @@ $.datepicker.setDefaults({
  					$("#mtitle").empty();	// append 초기화
  					$("#mtime").empty();
  					$("#seat").hide();	
- 					// alert(list.length);
  					
  					if(list.length == 0){
  						$("#mtitle").empty();
@@ -91,15 +87,12 @@ $(document).ready(function() {
 		
 		// 선택 시 좌석화면 유 무
 		$("#seat").hide();
-		// alert(this.value);
 		$.ajax({
 			url:'http://localhost:3000/mtime',
 			type:'post',
 			data:{ 'title':this.value },
 			success:function(list){
-			//	alert('success');
 				$("#mtime").empty();	// append 초기화
-					// alert(list.length);
 				let first = "<option>"+ '시간 선택' +"</option>";
 	 			$("#mtime").append(first);
 					for (i = 0; i < list.length; i++) {
@@ -122,11 +115,6 @@ $("#payid").val(id);
 var preseat="";
 // 상영 시간
 $("#mtime").on("change", function() {
-/* 	let sdate = $("#tkdateR").val()+" "+$("#mtime").val().substring(0, 5); 
-	let paysdate = $("#tkdateR").val()+" "+$("#mtime").val().substring(0, 13); 
-	let mtitle = $("#mtitle").val();
-	let date = $("#mtime").val();	// 상영 시간 */
-	
 	let msnum = ($("#mtime").val());	 // msnum
 	$("#paymsnum").val(msnum);
 	
@@ -180,8 +168,6 @@ $("#mtime").on("change", function() {
 		type:'post',
 		data:{ 'msnum' : msnum },
 		success:function(list){
-			// alert('success');
-			// alert(list.length);
 			
 			for(i=0; i < list.length; i++){
 				if($("#"+list[i])){		// 아이디가 일치하면
@@ -255,13 +241,13 @@ function ticketpay() {
 
 <h2 align="center">티켓예매 페이지</h2><br>
 <div align="center">
-<table border="1">
+<table>
 <col width="350px"><col width="350px"><col width="350px">
-<thead>
+<thead align="center">
 	<tr>
-		<th>상영 날짜</th>
-		<th>영화 제목</th>
-		<th>상영 시간</th>
+		<th align="center">상영 날짜</th>
+		<th align="center">영화 제목</th>
+		<th align="center">상영 시간</th>
 	</tr>
 </thead>
 
@@ -291,12 +277,8 @@ function ticketpay() {
 <br><br>
 
 
-<table id="seat" border="1"><col width="700px"><col width="350px">
+<table id="seat"><col width="700px"><col width="350px">
 <thead align="center">
-	<tr>
-		<th>좌석선택</th>
-		<th>내역/결제</th>
-	</tr>
 </thead>
 
 <tbody align="center">

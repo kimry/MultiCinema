@@ -45,7 +45,7 @@ public class KakaoPayController {
 			conn.setRequestProperty("Authorization", "KakaoAK 704f7b7e7e27e8835b13944d7744c8c0");
 			conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 			conn.setDoOutput(true);
-			String parameter = "cid=TC0ONETIME&partner_order_id=1&partner_user_id=MultiCinema&item_name=" + pname + "&quantity=" + count + "&total_amount=" + payprice + "&vat_amount=200&tax_free_amount=0&approval_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/SbPaySuccess.html?id=" + id + "&fail_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/SbPayFail.html&cancel_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/SbPayFail.html";
+			String parameter = "cid=TC0ONETIME&partner_order_id=1&partner_user_id=MultiCinema&item_name=" + pname + "&quantity=" + count + "&total_amount=" + payprice + "&vat_amount=200&tax_free_amount=0&approval_url=http://localhost:8090/MultiCinemaFront/views/main.html?page=kakaopay/SbPaySuccess.html?id=" + id + "&fail_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/SbPayFail.html&cancel_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/SbPayFail.html";
 			OutputStream give = conn.getOutputStream();
 			DataOutputStream datagive = new DataOutputStream(give);
 			datagive.writeBytes(parameter);
@@ -132,7 +132,7 @@ public class KakaoPayController {
 			conn.setRequestProperty("Authorization", "KakaoAK 704f7b7e7e27e8835b13944d7744c8c0");
 			conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 			conn.setDoOutput(true);
-			String parameter = "cid=TC0ONETIME&partner_order_id=1&partner_user_id=MultiCinema&item_name=" + mtitle + "&quantity=1"+ "&total_amount=" + price + "&vat_amount=200&tax_free_amount=0&approval_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/TiPaySuccess.html?msnum=" + msnum + "?id=" + id + "?title=" + mtitle + "?time=" + time + "?theater=" + theater + "?snum=" + snum + "?price=" + price + "&fail_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/TiPayFail.html?msnum=" + msnum + "?snum=" + snum + "&cancel_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/TiPayFail.html?msnum=" + msnum + "?snum=" + snum;
+			String parameter = "cid=TC0ONETIME&partner_order_id=1&partner_user_id=MultiCinema&item_name=" + mtitle + "&quantity=1"+ "&total_amount=" + price + "&vat_amount=200&tax_free_amount=0&approval_url=http://localhost:8090/MultiCinemaFront/views/main.html?page=kakaopay/TiPaySuccess.html?msnum=" + msnum + "?id=" + id + "?title=" + mtitle + "?time=" + time + "?theater=" + theater + "?snum=" + snum + "?price=" + price + "&fail_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/TiPayFail.html?msnum=" + msnum + "?snum=" + snum + "&cancel_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/TiPayFail.html?msnum=" + msnum + "?snum=" + snum;
 			OutputStream give = conn.getOutputStream();
 			DataOutputStream datagive = new DataOutputStream(give);
 			datagive.writeBytes(parameter);
