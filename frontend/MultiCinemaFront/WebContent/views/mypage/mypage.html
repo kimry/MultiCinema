@@ -1,20 +1,22 @@
 <meta charset="UTF-8">
-	<div>
-	<h1 align="center">My page </h1>
-	</div>
-	<br><br><br>
+
+<style type="text/css">
+ a:link { color: black; text-decoration: none; font-weight: bold; font-size:17px }
+ a:visited { color: black; text-decoration: none; font-size:17px}
+</style>
+	
 	<!-- Tab을 구성할 영역 설정-->
 	<div style="margin: 10px;">
 		<!-- Tab 영역 태그는 ul이고 클래스는 nav와 nav-tabs를 설정한다. -->
 		<ul class="nav nav-tabs">
 			<!-- Tab 아이템이다. 태그는 li과 li > a이다. li태그에 active는 현재 선택되어 있는 탭 메뉴이다. -->
-			<li class="active"><a href="#profile" data-toggle="tab">나의 정보</a>&nbsp; &nbsp;</li>
+			<li style="font-size:30px" class="active" ><a href="#profile" data-toggle="tab">나의 정보</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
 			<!-- a 태그의 href는 아래의 tab-content 영역의 id를 설정하고 data-toggle 속성을 tab으로 설정한다. -->
-			<li><a href="#upUser" data-toggle="tab">개인정보 변경</a>&nbsp; &nbsp;</li>
-			<li><a href="#ticket" data-toggle="tab">MY 예매내역</a>&nbsp; &nbsp;</li>
-			<li><a href="#watched" data-toggle="tab">내가 본 영화</a>&nbsp; &nbsp;</li>
-			<li><a href="#qna" data-toggle="tab">MY Q&A</a>&nbsp; &nbsp;</li>
-			<li><a href="#snackBar" data-toggle="tab">MY 스낵바</a></li>
+			<li style="font-size:30px"><a href="#upUser" data-toggle="tab">개인정보 변경</a>&nbsp; &nbsp;&nbsp;&nbsp;</li>
+			<li style="font-size:30px"><a href="#ticket" data-toggle="tab">MY 예매내역</a>&nbsp; &nbsp;&nbsp;&nbsp;</li>
+			<li style="font-size:30px"><a href="#watched" data-toggle="tab">내가 본 영화</a>&nbsp; &nbsp;&nbsp;&nbsp;</li>
+			<li style="font-size:30px"><a href="#qna" data-toggle="tab">MY Q&A</a>&nbsp; &nbsp;&nbsp; &nbsp;</li>
+			<li style="font-size:30px"><a href="#snackBar" data-toggle="tab">MY 스낵바</a></li>
 		</ul>
 		<!-- Tab이 선택되면 내용이 보여지는 영역이다. -->
 		<!-- 태그는 div이고 class는 tab-content로 설정한다. -->
@@ -25,10 +27,11 @@
 			
 			<div class="tab-pane fade in active" id="profile">
 			
-			<h3>MultiCinema</h3>
 			<br>
 			<h4>나의 프로필/나의 정보</h4>
-			<table  border="1" style="margin: 20px; font-size: 20px;"><col width="170px"><col width="400px">
+			<br>
+			<div style="width: 70%">
+			<table class="table table-striped table-hover"><col width="50px"><col width="150px">
 					<tr>
 						<th>이 름</th>
 						<td id="pname"></td>
@@ -51,6 +54,7 @@
 					</tr>
 					
 			</table>
+			</div>
 			</div>
 			
 			
@@ -75,11 +79,11 @@
 			<span>회원님의 소중한 정보를 안전하게 관리하세요.</span>
 			
 			<br><br><br>
-			
-				<table border="1" style="margin: 20px; font-size: 20px;"><col width="170px"><col width="600px">
+			<div style="width: 70%">
+				<table class="table table-striped table-hover"><col width="50px"><col width="220px">
 					<tr>
 						<th>이 름</th>
-						<td id="name"></td>
+						<td id="upname"></td>
 					</tr>
 					<tr>
 						<th>아이디</th>
@@ -87,11 +91,6 @@
 					</tr>
 					<tr>
 						<th>패스워드
-						&nbsp;
-						<span>
-							<button id="pwUp">변경</button>
-							<input id="pwSwitch" type="hidden" value="0">
-						</span>
 						</th>
 						<td id="pwNew">
 							<input id="pw" type="hidden"> <!-- 현재 비밀번호 -->
@@ -105,11 +104,8 @@
 					</tr>
 					<tr>
 						<th>이메일
-						&nbsp;&nbsp;&nbsp;&nbsp;
-						<button id="upEmail">변경</button>
-						</th>
+							</th>
 						<td>
-						<input id="email" size="60px" readonly="readonly">
 						<div id="emailNew">
 						<input type="text" id="email1" size="15px" placeholder="이메일 입력"> @ 
 						<input type="text" id="email2" size="15px" disabled value="naver.com"> 
@@ -136,13 +132,14 @@
 						</td>
 					</tr>
 				</table>
+					</div>
 				</div>
 			</div>
 			<!-- fade 클래스는 선택적인 사항으로 트랜지션(transition)효과가 있다.
 <!-- in 클래스는 fade 클래스를 선언하여 트랜지션효과를 사용할 때 in은 active와 선택되어 있는 탭 영역의 설정이다. -->
 			<div class="tab-pane fade" id="ticket">
-				MY 예매내역 메뉴
-				
+				<!--MY 예매내역 메뉴-->
+				<br><br>				
 				<table class="table table-striped table-hover">
 				<col width="50px"><col width="200px"><col width="250px"><col width="70px">
 				<col width="50px"><col width="50px"><col width="100px"><col width="200px">
@@ -167,7 +164,7 @@
 			
 			<br><br>
 			<!-- 영화예매, 스낵바 -->	
-			<div align="center">			
+			<div align="center">
 			<table border="2"><col width="300px"><col width="300px">
 				<tr>
 					<td>
@@ -192,12 +189,8 @@
        	     
 			</div>
 			
-			<div class="tab-pane fade" id="watched">내가 본 영화 메뉴
-				
-				<div>
-				<h4>내가 본 영화</h4>
-				<p id="tcount"><em></em></p>
-				</div>
+			<div class="tab-pane fade" id="watched">
+			<!-- 내가 본 영화 메뉴 -->
 				<br><br>
 				<table class="table table-striped table-hover">
 				<col width="50px"><col width="200px"><col width="250px"><col width="70px">
@@ -226,7 +219,7 @@
 				<tr>
 					<td>
 						<div align="center">
-          					<a href="main.html?page=movie/movielist.html" title="별점 & 리뷰">
+          					<a href="" title="별점 & 리뷰">
 	            			<h3>별점 & 리뷰</h3>
 	              			<span>내가 본 영화를<br>평가하고 싶다면?</span>
            					 </a>
@@ -247,11 +240,9 @@
 			
 			</div>
 			<div class="tab-pane fade" id="qna">
-
+				<!--MY Q&A 메뉴  -->
 				<div>
-					<h4>MY Q&A 메뉴</h4>
-					<br>
-					<br>
+					<br><br>
 					<table class="table table-striped table-hover">
 						<col width="100px">
 						<col width="300px">
@@ -277,8 +268,8 @@
 								<td>
 									<div align="center">
 										<a href="main.html?page=bbs/bbslist.html" title="고객센터 문의">
-											<h3>고객센터 문의</h3> <span>불편사항과 문의사항을 남겨주시면<br>친절히
-												답변드리겠습니다.
+											<h3>고객센터 문의</h3> 
+											<span>불편사항과 문의사항을 남겨주시면<br>친절히답변드리겠습니다.
 										</span>
 										</a>
 									</div>
@@ -290,10 +281,7 @@
 			</div>
 
 				<div class="tab-pane fade" id="snackBar">
-
-					<div>
-						<h4>My SnackBar</h4>
-					</div>
+				<!-- My SnackBar  -->
 					<br> <br>
 					<table class="table table-striped table-hover">
 						<col width="100px">
@@ -348,13 +336,10 @@
 
 <script type="text/javascript">
 
-// alert(id);
 $("#id").val(id);
 $("#idChcek").val(idChcek);
 
 $("#getUser").hide();	// 회원정보 수정 비밀번호 확인 전 숨기기
-$("#pwNew").hide();		// 비밀번호 수정 1차, 2차
-$("#emailNew").hide();	// 이메일 수정
 
 
 /* 비밀번호 확인 */
@@ -365,10 +350,6 @@ $("#btn").click(function() {
 		type:"post",
 		data:{id:$("#idChcek").val(), pw:$("#pwChcek").val()},
 		success:function(resp){
-			
-			//alert('success');
-			//alert(pw);	// 로그인한 비밀번호
-			//alert($("#pwChcek").val());		// 입력한 비밀번호
 			if( resp == "OK" ){
 				$("#getUser").show();	// 회원정보는 보여주고,
 				$("#userChcek").hide();	// 비밀번호 확인창 가리기
@@ -391,9 +372,7 @@ function getUser() {
 		type:'post',
 		data:{ 'id':id },
 		success:function(data){
-		//	alert('success');
-		//	alert( JSON.stringify(data));
-			$("#name").text( data.name );
+			$("#upname").text( data.name );
 			$("#id").text( data.id );
 			$("#pw").val( data.pw );
 			$("#birth").text( data.birth );
@@ -414,8 +393,6 @@ function myProfile() {
 		type:'post',
 		data:{ 'id':id },
 		success:function(data){
-		//	alert('success');
-		//	alert( JSON.stringify(data));
 			$("#pname").text( data.name );
 			$("#pid").text( data.id );
 			$("#pbirth").text( data.birth );
@@ -436,13 +413,6 @@ function getTodayList() {
 		type:"get",
 		data:{'id':id},
 		success:function(list){
-			// alert('success');
-			// session
-			//	JSON.parse(sessionStorage.getItem("login"));
-			//	login.id;
-			// alert(JSON.stringify(list));
-			// alert(list.length);
-			
 			$("#tlist").html("");
 			if(list.length == 0){
 				let no =  "<tr>"
@@ -486,12 +456,6 @@ function getPastList() {
 		type:"get",
 		data:{'id':id},
 		success:function(list){
-			// alert('success');
-			// session
-			//	JSON.parse(sessionStorage.getItem("login"));
-			//	login.id;
-			// alert(JSON.stringify(list));
-			// alert(list.length);
 			$("#tcount").html(list.length);
 			
 			$("#plist").html("");
@@ -537,7 +501,6 @@ function getSbPayList() {
 		type:"get",
 		data:{'id':id},
 		success:function(list){
-			// alert('success');
 			
 			$("#slist").html("");
 			if(list.length == 0){
@@ -570,35 +533,16 @@ function getSbPayList() {
 	});	
 }
 
-
-// 패스워드 변경
-$("#pwUp").click(function () {
-	$("#pwNew").show();
-});
-
- // 이메일 변경
-$("#upEmail").click(function () {	
-	$("#emailNew").show();
-	$("#email").hide(); 
-});
- 
- 
-
 // 수정 버튼
 $("#upBtn").click(function () {	
 	if($("#pwNew1").val() == $("#pwNew2").val()) { // 둘다 값이 없어도 된다.
-		// alert($("#email1").val()+'@'+ $("#email2").val());
 		let newEmail = ($("#email1").val()+'@'+ $("#email2").val());
-		// alert('ok');
-		// alert( $("#email1").val() ); 
 		$.ajax({
 			url:'http://localhost:3000/userUp',
 			type:'post',
 			data:{ 'id':id, email:newEmail, email1:$("#email1").val() ,pw: $("#pwNew1").val(),  },
 			success:function(data){
-			//	alert('success');
-			//	alert( JSON.stringify(data));
-				$("#name").text( data.name );
+				$("#upname").text( data.name );
 				$("#id").text( data.id );
 				$("#pw").val( data.pw );
 				$("#birth").text( data.birth );
@@ -642,10 +586,6 @@ function mygetBbslist() {
 		type:"get",
 		data:{ 'id':id },
 		success:function(list){
-		//	alert('success');
-			// session
-		//	let login = JSON.parse(sessionStorage.getItem("login"));
-		//	alert(login.id);
 			$("#myblist").html("");
 			
 			if(list.length == 0){
