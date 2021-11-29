@@ -15,4 +15,5 @@ public interface ActorDao {
 	List<ActorDto> getActor(int seq);
 	ActorDto getActorInfo(int aid);
 	ActorDto getActorMovie(int aid);
+	ActorDto getAid(String actor);
 }

@@ -1,21 +1,19 @@
 package com.one.multicinemaback.dto;
 
-import java.util.Date;
-
 public class MovieDto {
 	private int seq;
 	private String title;
 	private String genre;
 	private String content;
 	private String director;
-    private Date odate;
+    private String odate;
     private float score;
    
     MovieDto() {
     	
     }
 
-	public MovieDto(int seq, String title, String genre, String content, String director, Date odate, float score) {
+	public MovieDto(int seq, String title, String genre, String content, String director, String odate, float score) {
 		super();
 		this.seq = seq;
 		this.title = title;
@@ -66,11 +64,11 @@ public class MovieDto {
 		this.director = director;
 	}
 
-	public Date getOdate() {
+	public String getOdate() {
 		return odate;
 	}
 
-	public void setOdate(Date odate) {
+	public void setOdate(String odate) {
 		this.odate = odate;
 	}
 

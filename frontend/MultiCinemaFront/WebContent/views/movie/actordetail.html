@@ -29,7 +29,6 @@
 		</div>
 	</div>
 </div>
- -->
 <script type="text/javascript">
 
 var aid = sessionStorage.getItem("aid");
@@ -46,20 +45,6 @@ $.ajax({
 		 
 		vimg = $('<img>', {	'src' : './image/actor/'+aid+'.jpg'	});
 		$(vimg).appendTo('.thumb-image');
-	},
-	error:function(){
-		alert('error');
-	}
-});
-
-$.ajax({
-	url:'http://localhost:3000/actorMovie',
-	type:'get',
-	data:{ 'aid':aid },
-	success:function(data){
-		alert('success');
-		alert( JSON.stringify(data));
-		$("#atitle").html( data.title);
 	},
 	error:function(){
 		alert('error');

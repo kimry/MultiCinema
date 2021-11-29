@@ -7,6 +7,12 @@
 	INSERT INTO ACTOR(actor, age, country, career) VALUES(#{actor},#{age},#{country},#{career})
 </insert>
 
+<select id="getAid" parameterType="String" resultType="com.one.multicinemaback.dto.ActorDto">
+	SELECT *
+	FROM ACTOR
+	WHERE ACTOR = #{actor}
+</select>
+
 
 <select id="getActor" parameterType="Integer" resultType="com.one.multicinemaback.dto.ActorDto">
 	SELECT A.ACTOR AS ACTOR, A.AID AS AID

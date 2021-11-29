@@ -31,7 +31,7 @@ $(function() {
 	<td>상영관</td>
 	<td>
 	<select id="theater">
-		<option value="1">1관</option>
+		<option value="1" selected>1관</option>
 		<option value="2">2관</option>
 		<option value="3">3관</option>
 		<option value="4">4관</option>
@@ -68,7 +68,7 @@ $(function() {
 </tr>
 </table>
 
-<input type="button" value="등록" onclick="addMS()">
+<input type="button" value="등록" onclick="check()">
 
 <script type="text/javascript">
 for(var i=0;i<=23;i++){
@@ -101,11 +101,24 @@ function addMS(){
 		data:{ msnum:0, title:$("#title").val(), theater:$("#theater").val(), sdate:$("#date").val()+" "+$("#sh").val()+ ":" + $("#sm").val(), edate:$("#date").val()+" "+$("#eh").val()+ ":" + $("#em").val(),price:$("#price").val()},
 		success:function(resp){
 			alert("상영정보등록이 완료되었습니다.");
+			$('#title').val("");
+			$('#date').val("");
 		},
 		error:function(){
 			alert("상영정보등록이 실패하였습니다.");
 		}
 	});
+}
+function check(){
+	if($('#title').val().trim().length==0){
+		alert("제목을 입력해주세요.");
+		$('#title').focus();
+	}else if($('#date').val().trim().length==0){
+		alert("상영날짜를 선택해주세요.");
+		$('#date').focus();
+	}else{
+		addMS();
+	}
 }
 </script>
 </div>

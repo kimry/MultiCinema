@@ -2,21 +2,19 @@ package com.one.multicinemaback.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.one.multicinemaback.dao.FilmographyDao;
 import com.one.multicinemaback.dto.ActorDto;
 import com.one.multicinemaback.dto.MovieDto;
 import com.one.multicinemaback.dto.ReviewDto;
 import com.one.multicinemaback.service.ActorService;
+import com.one.multicinemaback.service.FilmographyService;
 import com.one.multicinemaback.service.MovieService;
 import com.one.multicinemaback.service.ReviewService;
-
-
-
 
 @RestController
 public class MovieController {
@@ -29,7 +27,10 @@ public class MovieController {
 	  private ActorService aservice;
 	  
 	  @Autowired
-	  private ReviewService mservice;
+	  private ReviewService rservice;
+	  
+	  @Autowired
+	  private FilmographyService fservice;
 	  
       @RequestMapping(value = "/movielist", method = RequestMethod.GET) 
 	  public List<MovieDto> list(){
@@ -45,31 +46,25 @@ public class MovieController {
   	  public MovieDto moviedetail(int seq) {
   		  System.out.println("MovieController Moviedetail()");
   		  
-  		  System.out.println(seq);
-  		  
-  		  System.out.println(service.getMovie(seq));
-  		
   		  return service.getMovie(seq);
   	  }
       
       @RequestMapping(value = "/getActor", method = RequestMethod.GET)
       public List<ActorDto> getActor(int seq) {
-    	  
     	  System.out.println("MovieController getActor()");
     	  
     	  return aservice.getActor(seq);    	// seq actor  
       }
       
       @RequestMapping(value = "/actordetail", method = RequestMethod.GET)
-    	public ActorDto actordetail(int aid) {
-    		System.out.println("MovieController actordetail()");
-    		
-    		return aservice.getActorInfo(aid);
+      public ActorDto actordetail(int aid) {
+    	  System.out.println("MovieController actordetail()");
+    	  return aservice.getActorInfo(aid);
     		
       }
       
       @RequestMapping(value = "/actorMovie", method = RequestMethod.GET)
-      	public ActorDto getActorMovie(int aid) {
+      public ActorDto getActorMovie(int aid) {
     	  System.out.println("MovieController getActorMovie()");
     	  
     	  return aservice.getActorMovie(aid);
@@ -77,11 +72,9 @@ public class MovieController {
   	
   	  @RequestMapping(value = "/reviewlist", method = RequestMethod.GET) 
   	  public List<ReviewDto> reviewList(int seq) throws Exception{
-  		  System.out.println("ReviewController reviewList()");
-
-  		  System.err.println();
+  		  System.out.println("MovieController reviewList()");
   		  
-  		  List<ReviewDto> list = mservice.reviewList(seq);
+  		  List<ReviewDto> list = rservice.reviewList(seq);
   		  
   	  return list;
   	  
@@ -89,35 +82,42 @@ public class MovieController {
   	
    	  @RequestMapping(value = "/reviewinsert", method = RequestMethod.POST) 
   	  public String reviewInsert(ReviewDto dto) throws Exception{
-  		  System.out.println("ReviewController reviewInsert()");
-  		  System.out.println(dto.toString());
+  		  System.out.println("MovieController reviewInsert()");
   		  
-  		  mservice.reviewInsert(dto);
+  		  rservice.reviewInsert(dto);
   		  service.updateScore(dto.getSeq());
-  	  return "success";
-  	  
+  		  return "success";
   	  }
   	 
    	  @RequestMapping(value = "/reviewupdate", method = RequestMethod.GET)
    	  public int reviewUpdate(int rnum, String content) throws Exception {
-   		  System.out.println("ReviewController reviewUpdate()");
+   		  System.out.println("MovieController reviewUpdate()");
 
-  		  System.err.println();
-  		  
   		  ReviewDto review = new ReviewDto();
   		  review.setRnum(rnum);
   		  review.setContent(content);
   		 
-  		  return mservice.reviewUpdate(review);
+  		  return rservice.reviewUpdate(review);
   		 
   	 }
   	 
   	 @RequestMapping(value = "/reviewdelete", method = RequestMethod.GET)
   	 public int reviewDelete(int rnum) throws Exception {
   		  System.out.println("ReviewController reviewDelete()");
-
-  		  System.err.println();
   		  
-  		 return mservice.reviewDelete(rnum);
+  		 return rservice.reviewDelete(rnum);
   	 }
+  	 
+  	 @RequestMapping(value = "/filmo", method = RequestMethod.POST)
+ 	 public String addFilmo(int fseq, String Actor){
+ 		 System.out.println("ReviewController addFilmo()");
+ 		 
+ 		 ActorDto actor = aservice.getAid(Actor);
+ 		 try {
+ 	 	     fservice.addFilmo(fseq, actor.getAid());  
+ 		 }catch(NullPointerException e) {
+ 			 return "fail";
+ 		 }
+ 		 return "success";
+ 	 }
 }

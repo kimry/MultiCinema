@@ -47,11 +47,14 @@
 				<div id="oda"></div>
 			</div>
 			<div id="actor" >출연진&nbsp;: </div>
+			<div id="addFilmo">
+				<input type="text" id="filmoActor">
+				<input type="button" value="배우추가" onclick="addFilmoActor()">
+			</div>
+			
 		</div>
 	</div>
 </div>
-
-
 <div id="contentData">
 	<div class="inner-wrap">
 		<div class="tab-list" style="table-layout: fixed;" >
@@ -95,7 +98,6 @@
 var seq = params.seq;
 let actorid;
 
-
 $.ajax({
 	url:'http://localhost:3000/getActor',
 	type:'get',
@@ -113,6 +115,29 @@ $.ajax({
 	}
 	
 });
+
+if(user.auth!=0){
+	$("#addFilmo").hide();
+}
+
+function addFilmoActor(){
+	$.ajax({
+		url:'http://localhost:3000/filmo',
+		type:'post',
+		data: {'fseq':seq, 'Actor':$("#filmoActor").val()},
+		success:function(msg){
+			if(msg=="success"){
+				alert("배우를 추가하였습니다.")
+				location.reload();
+			}else{
+				alert("해당배우가 존재하지 않습니다.")
+			}
+		},
+		error:function(){
+			alert("서버에 오류가 있습니다.");
+		}
+	});
+}
 
 function moveActor(aid) {
 	movePage("movie/actordetail.html");

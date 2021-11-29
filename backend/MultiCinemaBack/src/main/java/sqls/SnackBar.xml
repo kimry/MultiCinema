@@ -4,7 +4,7 @@
 <mapper namespace="com.one.multicinemaback.dao.SnackBarDao">
 
 <insert id="addSnackBar" parameterType="com.one.multicinemaback.dto.SnackBarDto">
-	INSERT INTO SNACKBAR(product, content, price) VALUES(#{product},#{content},#{price})
+	INSERT INTO SNACKBAR(product, content, price, category) VALUES(#{product},#{content},#{price},#{category})
 </insert>
 
 <select id="snackbarlist" parameterType="java.lang.String" resultType="com.one.multicinemaback.dto.SnackBarDto">

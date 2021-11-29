@@ -35,4 +35,8 @@ public class ActorService {
 	public ActorDto getActorMovie(int aid) {
 		return dao.getActorMovie(aid);
 	}
+	
+	public ActorDto getAid(String actor) {
+		return dao.getAid(actor);
+	}
 }
