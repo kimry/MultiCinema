@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8" />
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-//html에서 추가하면, parameter를 받을 수 있는 소스 : 추가만 해주면 된다.
-let urlParams = location.search.split(/[?&]/).slice(1).map(function(paramPair) {
+alert("결제가 완료되었습니다! 이용해 주셔서 감사합니다!");
+let urlParams = decodeURI(location.search).split(/[?&]/).slice(1).map(function(paramPair) {
     return paramPair.split(/=(.+)?/).slice(0, 2);
 }).reduce(function(obj, pairArray) {
     obj[pairArray[0]] = pairArray[1];
     return obj;
 }, {});
-
-alert("결제가 완료되었습니다! 이용해 주셔서 감사합니다!");
 </script>
 <style type="text/css">
 .reservation{
@@ -108,35 +107,45 @@ alert("결제가 완료되었습니다! 이용해 주셔서 감사합니다!");
 
 <script type="text/javascript">
 let tid = sessionStorage.getItem("tid");
+alert(urlParams.product);
+$.ajax({
+	url:"http://localhost:3000/insertsbpay",
+	type:"post",
+	data:{ 'tid':tid, "id":urlParams.id, "product":urlParams.product, "count":urlParams.count, "payprice":urlParams.payprice },
+	success:function(resp){
+		$.ajax({
+			url:"http://localhost:3000/getsbpay",
+			type:"post",
+			data:{ "tid": tid },
+			success:function(spay){
+				
+				$("#pprice").append(spay.payprice + "원");
+				$("#payprice").append(spay.payprice + "원");
+				$("#tid").append(spay.tid);
+				$("#sbdate").append(spay.sbdate);
+				
+		  
+			},
+			error:function(){
+				alert('error');
+			}
+		});
+	},
+	error:function(error){
+		alert("error");
+	}
+});
+
 $.ajax({
 	url:"http://localhost:3000/sgetuser",
 	type:"post",
-	data:{ "id": id },
+	data:{ "id": urlParams.id },
 	success:function(resp){
 		
         $("#uname").append(resp.name);
         $("#uemail").append(resp.email);
         $("#uphone").append(resp.phone);
         
-	},
-	error:function(){
-		alert('error');
-	}
-});
-
-
-$.ajax({
-	url:"http://localhost:3000/getsbpay",
-	type:"post",
-	data:{ "tid": tid },
-	success:function(spay){
-		
-		$("#pprice").append(spay.payprice + "원");
-		$("#payprice").append(spay.payprice + "원");
-		$("#tid").append(spay.tid);
-		$("#sbdate").append(spay.sbdate);
-		
-  
 	},
 	error:function(){
 		alert('error');

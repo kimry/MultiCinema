@@ -43,7 +43,6 @@ function getsbdetail(){
 		type:"get",
 		data:{ "product":product },
 		success:function(sbdetail){
-
 			let str = "<tr>";
 			    str += "<td rowspan='4'><img src='./image/snackbar/" + sbdetail.product + ".png' width='400' height='350'>" + "</td>";
 			    str += "<td align='left' class='detail' colspan='2'><p style='font-size: 25px; font-weight: 600;'>" + sbdetail.product + "<hr></p></td>";

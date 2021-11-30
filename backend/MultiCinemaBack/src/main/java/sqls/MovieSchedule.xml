@@ -17,6 +17,7 @@
 	SELECT * 
 	FROM movieschedule
 	WHERE title = #{title}
+	ORDER BY SDATE
 </select>
 
 <select id="mmsnum" parameterType="Integer" resultType="com.one.multicinemaback.dto.MovieScheduleDto">

@@ -68,26 +68,7 @@ function sbpay(){
 			alert("고객님께서 결제하실 정보는 다음과 같습니다.\n\n" + "상품: " + p_name + "\n" + "수량: " + p_count + "\n" + "결제금액: " + p_price + "원");
 			tid = data.tid;
 			sessionStorage.setItem("tid", data.tid);
-			insertsbpay(tid, id, p_name, p_count, p_price);
 			location.href = data.next_redirect_pc_url;
-	
-			function insertsbpay(tid, id, product, count, payprice){			
-				$.ajax({
-					url:"http://localhost:3000/insertsbpay",
-					type:"get",
-					data:{ 'tid':tid, "id":id, "product":product, "count":count, "payprice":payprice, },
-					success:function(resp){
-					
-					},
-					error:function(error){
-						alert("error");
-					}
-				});
-				
-				
-			}
-			
-			
 		},
 		error:function(error){
 			alert("error");

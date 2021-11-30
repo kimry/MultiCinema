@@ -9,24 +9,8 @@
 
 <script type="text/javascript">
 let tid = sessionStorage.getItem("tid");
-
-$.ajax({
-	url:"http://localhost:3000/delsbpay",
-	type:"post",
-	data:{ "tid": tid },
-	success:function(resp){
-		if(resp == "success"){
-			alert("결제가 취소되었습니다.");
-		}else{
-			alert("error");
-		}
-		location.href = "/MultiCinemaFront/views/main.html?page=snackbar/snackbar.html";
- 
-	},
-	error:function(){
-		alert('error');
-	}
-});
+alert("결제가 취소되었습니다.");
+location.href = "/MultiCinemaFront/views/main.html?page=snackbar/snackbar.html";
 </script>
 </body>
 </html>

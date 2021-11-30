@@ -70,6 +70,5 @@ public class MovieScheduleController {
 			
 			return list;
 		}
-
-	
+		
 }

@@ -45,7 +45,7 @@ public class KakaoPayController {
 			conn.setRequestProperty("Authorization", "KakaoAK 704f7b7e7e27e8835b13944d7744c8c0");
 			conn.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 			conn.setDoOutput(true);
-			String parameter = "cid=TC0ONETIME&partner_order_id=1&partner_user_id=MultiCinema&item_name=" + pname + "&quantity=" + count + "&total_amount=" + payprice + "&vat_amount=200&tax_free_amount=0&approval_url=http://localhost:8090/MultiCinemaFront/views/main.html?page=kakaopay/SbPaySuccess.html?id=" + id + "&fail_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/SbPayFail.html&cancel_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/SbPayFail.html";
+			String parameter = "cid=TC0ONETIME&partner_order_id=1&partner_user_id=MultiCinema&item_name=" + pname + "&quantity=" + count + "&total_amount=" + payprice + "&vat_amount=200&tax_free_amount=0&approval_url=http://localhost:8090/MultiCinemaFront/views/main.html?page=kakaopay/SbPaySuccess.html?id=" + id + "?count=" + count + "?product="+pname+"?payprice="+payprice+"&fail_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/SbPayFail.html&cancel_url=http://localhost:8090/MultiCinemaFront/views/kakaopay/SbPayFail.html";
 			OutputStream give = conn.getOutputStream();
 			DataOutputStream datagive = new DataOutputStream(give);
 			datagive.writeBytes(parameter);
@@ -81,7 +81,7 @@ public class KakaoPayController {
 		return "redirect:" + url;
 	}
 	
-	@RequestMapping(value = "/insertsbpay", method = RequestMethod.GET)
+	@RequestMapping(value = "/insertsbpay", method = RequestMethod.POST)
 	public String insertpay(SbPayDto dto) {
 		System.out.println("KakaoPayController insertpay()");
 		System.out.println(dto);
@@ -150,11 +150,6 @@ public class KakaoPayController {
 			InputStreamReader reader = new InputStreamReader(receive);
 			
 			BufferedReader caster = new BufferedReader(reader);
-			
-			/*
-			JSONObject pay = new JSONObject(caster.readLine());
-			String tid = pay.getString("tid");
-			*/
 			
 			return caster.readLine();
 		} catch (MalformedURLException e) {
