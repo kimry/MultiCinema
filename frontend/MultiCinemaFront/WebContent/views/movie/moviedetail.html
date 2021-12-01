@@ -1,4 +1,42 @@
 <meta charset="UTF-8">
+<script type="text/javascript">
+$("#mscrollbar").mouseover(function(){$(this).css("overflow","auto")});
+$("#mscrollbar").mouseleave(function(){$(this).css("overflow","hidden")});
+
+$(document).ready(function(){
+
+	$(".btn_close").click(function(event){
+		$(".layer_wrap").removeClass("active");
+		$(".dim").removeClass("active");
+	});
+	$(".star").bind("click mouseenter focusin", function(){
+		$(this).parent().children(".star").removeClass("on");
+		$(this).addClass("on").prevAll(".star").addClass("on");
+		});
+	
+	 $(".score_info em"),$(".star").on("click mouseenter focusin", function(){
+		$(this).index()+1;
+		$(".score_info em").text($(this).index()+1);
+	 });
+	
+	// 탭리스트
+	const tabList = document.querySelectorAll('.tab_wrap > li');
+	
+	for(var i = 0; i < tabList.length; i++){
+	  tabList[i].querySelector('.tab_tit').addEventListener('click', function(e){
+	    e.preventDefault();
+	    
+	    for(var j = 0; j < tabList.length; j++){
+	    	
+	      tabList[j].classList.remove('active');
+	    }
+	    this.parentNode.classList.add('active');
+	  });
+	}
+	
+});
+</script>
+
 
 <div class="movie-detail-page">
 	<div class="bg-img" id="vrap">
@@ -7,8 +45,7 @@
 	<div class="bg-pattern"></div>
 	<div class="bg-mask"></div>
 	<div></div>
-	<div class="movie-detail-cont">
-		<p class="title" id=title></p>
+	<div class="movie-detail-cont">	 
 		<div class="info">
 			<div class="score" >
 				<p class="tit">실관람 평점</p>
@@ -19,80 +56,183 @@
 				</div>
 			</div>
 		</div>	
-		<div class="poster">
-			<div class="wrap" id="wrap">
-				<!-- <img src="./images/" > -->
-			</div>
-		</div>
-	</div>
-</div>
-<div id="contentData" align="left">
-	<div class="inner-wrap">
-		<div class="tab-list" style="table-layout: fixed;" >
-			<ul>
-				<li>
-					<a>영화정보</a>
-				</li>
-				
-			</ul>
-		</div>
-		<div class="movie-summary infoContent" id="info" >
-			<div class="txt" id="mcontent" ></div>
-		</div>
-		<div class="movie-info infoContent">
-			<!-- <p>상영타입</p> -->
-			<div class="line">
-				<div id="dir"></div>
-				<div id="gen"></div>
-				<div id="oda"></div>
-			</div>
-			<div id="actor" >출연진&nbsp;: </div>
-			<div id="addFilmo">
-				<input type="text" id="filmoActor">
-				<input type="button" value="배우추가" onclick="addFilmoActor()">
-			</div>
-			
-		</div>
-	</div>
-</div>
-<div id="contentData">
-	<div class="inner-wrap">
-		<div class="tab-list" style="table-layout: fixed;" >
-			<ul>
-				<li>
-					<a>관람평</a>
-				</li>
-			</ul>
-		</div>
-		<div class="container">
-		    <form name="reivewInsertForm">
-		        <div class="input-group">
-		           <input type="hidden" name="seq" value="${seq}"/>
-		           <input type="text" class="form-control" id="rcontent" name="rcontent" placeholder="내용을 입력하세요.">
-		           <select id="inputscore" name="score">
-		           		<option value="1" selected="selected">1</option>
-		           		<option value="2">2</option>
-		           		<option value="3">3</option>
-		           		<option value="4">4</option>
-		           		<option value="5">5</option>
-		           		<option value="6">6</option>
-		           		<option value="7">7</option>
-		           		<option value="8">8</option>
-		           		<option value="9">9</option>
-		           		<option value="10">10</option>
-		           </select>
-		           <span class="input-group-btn">
-		                <button class="btn btn-default" type="button" name="reviewInsertBtn" onclick="reviewInsert()">등록</button>
-		           </span>
-		          </div>
-		    </form>
-		</div>
-		<div class="container">
-		    <div class="reviewList"></div>
-		</div>
 	</div>
 </div>
 
+<div id="mcontents" class="contents_movie_detail">
+	<div class="detail_top_wrap">
+		<div class="poster_info"></div>
+		<div class="tit_info">
+			<strong id="title" class="title"></strong>
+		</div>
+		<ul class="detail_info2">
+			<li class="sub_info1">
+				<em>장르</em>
+				<strong>
+					<em id="gen"></em>
+					<em id="oda"></em>
+				</strong>
+			</li>
+			<li class="sub_info2">
+				<em>감독</em>
+				<strong class="line_type">
+					<em id="dir"></em>
+				</strong>
+			</li>
+			<li class="sub_info3">
+				<em>출연</em>
+				<strong class="line_type" id="actor">
+				</strong>
+				<em id="addFilmo">
+					<input type="text" id="filmoActor">
+					<input type="button" value="배우추가" onclick="addFilmoActor()">
+				</em>
+			</li>
+			<li class="sub_info4">
+			
+				<em style="float: left;">개요</em>
+				
+				<strong id="mscrollbar" class="line_type" style="float: right; width: 94%; height: 128px; overflow: hidden;" >
+					<em id="mcontent"></em>
+				</strong>
+			</li>
+		</ul> 
+	</div>
+</div>
+
+<ul class="tab_wrap outer" style="margin-top: 100px;">
+	<li class="active">
+		<button type="button" class="tab_tit" style="width: 50%; left: 0%;">
+			<span>영화정보</span>
+		</button>
+		<div class="tab_con">
+			<div class="movie_tab_info1">
+				<div class="left_con">
+					<strong class="tit_info"></strong>
+				</div>
+			</div>
+			<div class="movie_tab_info2" id="movie_trailer">
+				<h5 class="tit_info">트레일러</h5>
+				<div class="slide_wrap slide_movie_detail_trailer">
+					<div class="owl-carousel owl-loaded owl-drag">
+						<div class="owl-stage-outer">
+							<div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0sease 0s; width: 1334px;">
+								<div class="owl-item active" style="width: 313.333px; margin-right: 20px;">
+									<div class="item" id="movie_trailer_0">
+										<a id="trailer_layout_0">
+											<em class="trailer_poster_0"></em>
+											<strong>티저 예고편</strong>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0sease 0s; width: 1334px;">
+								<div class="owl-item active" style="width: 313.333px; margin-right: 20px;">
+									<div class="item" id="movie_trailer_1">
+										<a id="trailer_layout_1">
+											<em class="trailer_poster_1"></em>
+											<strong>메인 예고편</strong>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0sease 0s; width: 1334px;">
+								<div class="owl-item active" style="width: 313.333px; margin-right: 20px;">
+									<div class="item" id="movie_trailer_2">
+										<a id="trailer_layout_2">
+											<em class="trailer_poster_2"></em>
+											<strong>스페셜 영상</strong>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</li>
+	<li class="">
+		<button type="button" class="tab_tit" style="width: 50%; left: 50%;">
+			<span>평점 및 관람평</span>
+		</button>
+		<div class="tab_con">
+			<div class="movie_score_box">
+				<span class="txt_ic_score2 ty3">
+					<em>총 평점</em>
+					<strong id="movie_score"></strong>
+					<span>10</span>
+				</span>
+				<p class="txt_info">
+					<span>
+						영화 관람 후 여러분들의 관람평을 작성해주세요!
+					</span>
+				</p>
+			</div>
+			<div class="movie_review_box" id="movie_review_box">
+				<div class="star_score_box">
+					<strong class="score_info">
+						<em></em>
+						점
+					</strong>
+					<div class="star_info">
+						<div class="star_rate">
+							<button type="button" class="star">
+								<em>별1점</em>
+							</button>
+							<button type="button" class="star">
+								<em>별2점</em>
+							</button>
+							<button type="button" class="star">
+								<em>별3점</em>
+							</button>
+							<button type="button" class="star">
+								<em>별4점</em>
+							</button>
+							<button type="button" class="star">
+								<em>별5점</em>
+							</button>
+							<button type="button" class="star">
+								<em>별6점</em>
+							</button>
+							<button type="button" class="star">
+								<em>별7점</em>
+							</button>
+							<button type="button" class="star">
+								<em>별8점</em>
+							</button>
+							<button type="button" class="star">
+								<em>별9점</em>
+							</button>
+							<button type="button" class="star">
+								<em>별10점</em>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="review_write_box">
+					<textarea id="txtComment" placeholder="평점 및 관람평을 작성해주세요." title="관람평 작성"></textarea>
+				</div>
+				<button type="submit" id="btnComment" class="btn_submit" onclick="reviewInsert()">관람평 작성</button>
+			</div>
+			<div class="movie_review_list">
+				<div class="review_top">
+					<div class="total_info">
+						총
+						<em></em>
+						건
+					</div>
+				</div>
+				<ul class="reviewList" align="left"></ul>
+			</div>
+		</div>
+	</li>
+</ul>
+
+
+
+
+	
 <script type="text/javascript">
 var seq = params.seq;
 let actorid;
@@ -102,9 +242,9 @@ $.ajax({
 	type:'get',
 	data: {'seq':seq},
 	success:function(list){
-
 		$.each(list, function (i, item) {
-		let	str = "<a onclick=moveActor("+ item.aid + ") >" + item.actor + "</a>&nbsp;";
+		let	str = "<a onclick=moveActor("+ item.aid + ") style='cursor: pointer;'>" + item.actor + "</a>&nbsp;"; 
+
 			$("#actor").append(str);
 		})
 	
@@ -114,6 +254,7 @@ $.ajax({
 	}
 	
 });
+
 
 if(user.auth!=0){
 	$("#addFilmo").hide();
@@ -139,59 +280,94 @@ function addFilmoActor(){
 }
 
 function moveActor(aid) {
+	
 	movePage("movie/actordetail.html");
 	sessionStorage.setItem("aid", aid);
 	
 }
+
+
  
 $(document).ready(function () {
-	$.ajax({
-		url:'http://localhost:3000/moviedetail',
-		type:'get',
-		data:{ 'seq':seq },
-		success:function(data){ 
-			$("#title").text( data.title );
-			$("#genre").text( data.genre );
-			$("#mcontent").html(data.content);
-			$("#director").text( data.director );
-			$("#odate").text( data.odate);
-			$("#score").text( data.score );
-			$("#vid").attr("src",'./video/'+ seq+'.mp4')
-			$("#dir").html("감독&nbsp;: " + data.director + "<br>");
-			$("#gen").html("장르&nbsp;: " + data.genre + "<br>");
-			$("#oda").html("개봉일&nbsp;: " + data.odate + "<br>");
-			
-			vimg = $('<img>', {	'src' : './image/'+seq+'.jpg'	
+
+$.ajax({
+	url:'http://localhost:3000/moviedetail',
+	type:'get',
+	data:{ 'seq':seq },
+	success:function(data){
+		 
+		$("#title").text( data.title.replaceAll(".",":") );
+		$("#genre").text( data.genre );
+		$("#mcontent").html(data.content.replaceAll("\n","<br>") );
+		$("#director").text( data.director );
+		$("#odate").text( data.odate.substring(0, 10).replaceAll("-",".") );
+		$("#score").text( data.score );
+		$("#movie_score").text( data.score );
+		$("#dir").html(data.director);
+		$("#gen").html(data.genre);
+		$("#oda").html("개봉일&nbsp; " + data.odate.substring(0, 10).replaceAll("-","."));
+	 
+		$("#vid").attr("src",'./video/'+ seq+'.mp4')
+		
+		$("#trailer_layout_0").click(function(event){
+			$("#vdoPlayer").attr("src",'video/'+ seq+'_0.mp4')  
+			$(".layer_wrap").addClass("active");
+			$(".dim").addClass("active");
 		});
-		$(vimg).appendTo('#wrap');	
-		},error:function(){
-			alert('~~error');
-		}
-	});
+		
+		
+		$("#trailer_layout_1").click(function(event){
+			$("#vdoPlayer").attr("src",'video/'+ seq+'_1.mp4')  
+			$(".layer_wrap").addClass("active");
+			$(".dim").addClass("active");
+		});
+		
+		
+		$("#trailer_layout_2").click(function(event){
+			$("#vdoPlayer").attr("src",'video/'+ seq+'_2.mp4')  
+			$(".layer_wrap").addClass("active");
+			$(".dim").addClass("active");
+		});
+		
+		
+		vimg = $('<img>', {	'src' : './image/'+seq+'.jpg'	});
+		t0_img = $('<img>', {	'src' : './image/'+seq+'_0.jpg'	});
+		t1_img = $('<img>', {	'src' : './image/'+seq+'_1.jpg'	});
+		t2_img = $('<img>', {	'src' : './image/'+seq+'_2.jpg'	});
+		$(vimg).appendTo('.poster_info');
+		$(t0_img).appendTo('.trailer_poster_0');
+		$(t1_img).appendTo('.trailer_poster_1');
+		$(t2_img).appendTo('.trailer_poster_2');
+	},
+	error:function(){
+		alert('~~error');
+	}
 });
 
+});
 
-
- 
- 
 //댓글 목록 
+
 function reviewList(){
     $.ajax({
         url : 'http://localhost:3000/reviewlist',
         type : 'get',
         data : {'seq':seq},
         success : function(data){
+        	$(".total_info em").text(data.length);
+        	
             var a =''; 
             $.each(data, function(key, value){ 
-                a += '<div class="reviewArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-                a += '<div class="reviewInfo('+value.rnum+')">'+'작성자 : '+value.id+'</div>';
-                a += '<div class="reviewScore('+value.rnum+')"> <p> 평점 : '+value.score+'</p>';
-                a += '</div>'
-                a += '<div class="reviewContent('+value.rnum+')"> <p> 내용 : '+value.content +'</p>';
-                a += '</div>'
-                a += '<div class="reviewDate('+value.rnum+')" style="text-align: right;"> <p>'+value.wdate+'</p>';
+                a += '<li>';
+                a += '<div class="top_info">';
+                a += '<span class="reviewInfo">'+value.id+'</span>';
+                a += '<span class="reviewScore ty2"> <em>평점</em> <strong>'+value.score+'</strong> </span>';
                 a += '</div>';
-                a += '</div>';
+                a += '<div class="reviewContent">'+value.content+'</div>';
+                a += '<div class="btm_info">'
+                a += '<span class="reviewDate">'+value.wdate+'</span>'
+                a += '</div>'
+                a += '</li>';
             });
             
             $(".reviewList").html(a);
@@ -199,15 +375,17 @@ function reviewList(){
     });
 }
  
+
 //댓글 등록
 function reviewInsert(){
     $.ajax({
         url : 'http://localhost:3000/reviewinsert',
         type : 'post',
-        data : {'seq':seq, 'content':$("#rcontent").val(), 'id':user.id, 'score':Number($("#inputscore").val())},
+        data : {'seq':seq, 'content':$("#txtComment").val(), 'id':user.id, 'score':Number($(".score_info em").text())},
         success : function(data){
             if(data == "success") {
-                location.reload(); //댓글 작성 후 댓글 목록 reload
+                 location.reload(); //댓글 작성 후 댓글 목록 reload
+            	
             }
         }
     });
@@ -254,7 +432,7 @@ function reivewDelete(rnum){
  
  
  
- 
+
 $(document).ready(function(){
     reviewList(); //페이지 로딩시 댓글 목록 출력 
 });

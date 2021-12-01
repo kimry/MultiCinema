@@ -29,7 +29,7 @@ $.datepicker.setDefaults({
  					
  					if(list.length == 0){
  						$("#mtitle").empty();
- 						let no =  "<option style='font-weight:600; background:#EDECEB; height:25pt; font-size:18px'>" + '금일 상영하실 영화가 없습니다.' + "</option>";
+ 						let no =  "<option style='font-weight:500; background:#EDECEB; height:25pt; font-size:18px'>" + '금일 상영하실 영화가 없습니다.' + "</option>";
  						$("#mtitle").append(no);
  						
  					}else if (list.length > 0) {
@@ -38,7 +38,7 @@ $.datepicker.setDefaults({
  	 					$("#mtitle").append(first);
  	 					
  				 		for (i = 0; i < list.length; i++) {
- 							let str = "<option style='font-size:17px;'>"+list[i].title+ "</option>";
+ 							let str = "<option style='font-size:17px; height: 22pt;'>"+list[i].title+ "</option>";
  							$("#mtitle").append(str);  
  						}
  					}
@@ -99,7 +99,7 @@ $(document).ready(function() {
 	 			$("#mtime").append(first);
 					for (i = 0; i < list.length; i++) {
 						if ( list[i].sdate >= day && dayplus1 > list[i].sdate && list[i].sdate > time) { // 상영 시간 -> 선택한 날짜 && 다음날 00시 && 현재날짜
-							let mdate = "<option style='font-size:17px;' value='"+list[i].msnum+"'>"+list[i].sdate.substring(11, 16) + ' ~ ' + list[i].edate.substring(11, 16)+ "</option>";
+							let mdate = "<option style='font-size:18px; height: 22pt;' value='"+list[i].msnum+"'>"+list[i].sdate.substring(11, 16) + ' ~ ' + list[i].edate.substring(11, 16)+ "</option>";
 							$("#mtime").append(mdate);
 						}
 					}
@@ -214,14 +214,28 @@ function ticketpay() {
 				'theater':theater, 'snum':snum, 'price':price},
 			dataType:'json',	
 			success:function(data){
+				alert(JSON.stringify(data));
 				tid=data.tid
+				alert(tid);
+				alert(data.next_redirect_pc_url);
 				sessionStorage.setItem("tid", data.tid);
 				inserttipay(tid, msnum, id, title, sdate, edate, theater, snum, price);
 				location.href = data.next_redirect_pc_url;
 				
 				function inserttipay(tid, msnum, id, title, sdate, edate, theater, snum, price) {
 					
-					
+					$.ajax({
+						url: 'http://localhost:3000/inserttipay',
+						type:"get",
+						data:{'tid':tid, 'msnum':msnum, 'id':id, 'title':title, 'sdate': sdate, 'edate':edate, 'theater':theater, 'snum':snum, 'price': price },
+						success:function(resp){
+							
+							alert("success");
+						},
+						error:function(error){
+							alert("error");
+						}
+					});
 				}
 			},
 			error:function(){
@@ -234,8 +248,8 @@ function ticketpay() {
 }
 
 </script>
-<div align="center">
-<table width="1050" height="500">
+<div align="center" ">
+<table width="1050" height="500" style="border: 1px solid #585858;">
 <col width="350px"><col width="350px"><col width="350px">
 <thead align="center">
 	<tr height="50" style="background-color: black; color: white">
@@ -320,14 +334,14 @@ function ticketpay() {
 					<input type="hidden" readonly="readonly" size="1px" id="payedate"> <br><br>
 				</td>
 			</tr>
-			<tr style="border-top: none; border-bottom: none;" style="font-size:20px;">
+			<tr align="right" style="border-top: none; border-bottom: none;" style="font-size:20px;">
 				<td id="payview" style="color: black; font-weight:600;">
 					금액 : <span id="payprice" style="color:#FF0040; font-size:25pt;"></span> 원
 				</td>
 			</tr>
-			<tr style="border-top: none; border-bottom: none;" style="font-size:20px;">
+			<tr style="border-top: none; border-bottom: none;">
 				<td align="center">
-					<button onclick="ticketpay()" style="background-color: #FF0040; font-weight:600; color: white; height: 40pt; width:60%; " >예매하기</button>
+					<button onclick="ticketpay()" style="background-color: #FF0040; font-weight:600; color: white; height: 100%; width:100%; padding: 12px; font-size:20px;" >예매하기</button>
 				</td>
 			</tr>
 		</tbody>
