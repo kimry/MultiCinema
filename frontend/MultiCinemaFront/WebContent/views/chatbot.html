@@ -109,7 +109,7 @@ function respProc(resp){
     	$("#chatbox").append("<div class='botmsg'>" + JSON.stringify(json.bubbles[0]["data"].description).replaceAll("\"","") + "</div><br>");
     }else if(JSON.stringify(json.bubbles[0]["data"]["cover"].type).replaceAll("\"","") == "text"){
     //	$("#chatbox").append("<div align='right'><div class='botmsg'>" + JSON.stringify(json.bubbles[0]["data"]["cover"]["data"].description).replaceAll("\"","") + "</div></div><br>");
-    	$("#chatbox").append("<div class='botmsg'>" + JSON.stringify(json.bubbles[0]["data"]["cover"]["data"].description).replaceAll("\"","") +"<br>" + "<a href=" + JSON.stringify(json.bubbles[0]["data"].contentTable[0][0]["data"]["data"]["action"]["data"].url) + "target='_blank'>" + JSON.stringify(json.bubbles[0]["data"].contentTable[0][0]["data"].title).replaceAll("\"","") + "</a></div><br>");
+    	$("#chatbox").append("<div class='botmsg'>" + JSON.stringify(json.bubbles[0]["data"]["cover"]["data"].description).replaceAll("\"","") +"<br>" + "<a href=" + JSON.stringify(json.bubbles[0]["data"].contentTable[0][0]["data"]["data"]["action"]["data"].url) + "target='_self'>" + JSON.stringify(json.bubbles[0]["data"].contentTable[0][0]["data"].title).replaceAll("\"","") + "</a></div><br>");
     }else if(JSON.stringify(json.bubbles[0]["data"]["cover"].type).replaceAll("\"","") == "image"){
     	$("#chatbox").append("<div class='botmsg'>" + JSON.stringify(json.bubbles[0]["data"]["cover"].title).replaceAll("\"","") + "<br>" + "<img src=" + JSON.stringify(json.bubbles[0]["data"]["cover"]["data"].imageUrl) + "style='width:200px; height:200px;'>" + "</div><br>");
     //	$("#chatbox").append("<div align='right'><div class='botmsg'>" + JSON.stringify(json.bubbles[0]["data"]["cover"].title) + "</div></div><br>");

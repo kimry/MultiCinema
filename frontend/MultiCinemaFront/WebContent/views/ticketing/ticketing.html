@@ -1,6 +1,5 @@
 <meta charset="UTF-8">
 <script type="text/javascript">
-// 상영 날짜
 $.datepicker.setDefaults({
     dateFormat: 'yyyy-mm-dd',
     prevText: '이전 달',
@@ -214,29 +213,9 @@ function ticketpay() {
 				'theater':theater, 'snum':snum, 'price':price},
 			dataType:'json',	
 			success:function(data){
-				alert(JSON.stringify(data));
 				tid=data.tid
-				alert(tid);
-				alert(data.next_redirect_pc_url);
 				sessionStorage.setItem("tid", data.tid);
-				inserttipay(tid, msnum, id, title, sdate, edate, theater, snum, price);
 				location.href = data.next_redirect_pc_url;
-				
-				function inserttipay(tid, msnum, id, title, sdate, edate, theater, snum, price) {
-					
-					$.ajax({
-						url: 'http://localhost:3000/inserttipay',
-						type:"get",
-						data:{'tid':tid, 'msnum':msnum, 'id':id, 'title':title, 'sdate': sdate, 'edate':edate, 'theater':theater, 'snum':snum, 'price': price },
-						success:function(resp){
-							
-							alert("success");
-						},
-						error:function(error){
-							alert("error");
-						}
-					});
-				}
 			},
 			error:function(){
 				alert('error');
@@ -286,7 +265,7 @@ function ticketpay() {
 <br><br>
 
 <div align="center">
-<table border="1" id="seat"  width="1050" height="500">
+<table border="1" id="seat"  width="1050" height="500" style="margin-bottom:50px">
 <col width="700px"><col width="350px">
 <thead align="center">
 	<tr height="50" style="background-color: black; color: white">
@@ -295,55 +274,55 @@ function ticketpay() {
 	</tr>
 </thead>
 
-<tbody align="center">
-			<tr>
-				<td rowspan="9"><br>
-					<div>
-						<h1>SCREEN</h1>
-						<br>
-					</div>
-					<div id="ticket"></div>
-				</td>
-			</tr>
-			
-			<tr style="font-size:18px;">
-				<td align="left" style="color: black; font-weight:600;">
-					&nbsp;영화제목 : <span id="paytitle"></span><br>
-				</td>
-			</tr>
-			<tr style="font-size:18px;">
-				<td align="left" style="color: black; font-weight:600;">
-					&nbsp;상영시간 : <span id="paytime"></span><br>
-				</td>
-			</tr>
-			<tr style="font-size:18px;">
-				<td align="left" style="color: black; font-weight:600;">
-					&nbsp;상영관 : <span id="paytheater"></span><br>
-				</td>
-			</tr>
-			<tr style="font-size:18px;">
-				<td align="left" style="color: black; font-weight:600;">
-					&nbsp;좌석 : <span id="payseat"></span>
-				</td>
-			</tr>
-			<tr>
-				<td style="border-bottom: none;">
-					<input type="hidden" readonly="readonly" size="1px" id="payid"> <br>
-					<input type="hidden" readonly="readonly" size="1px" id="paymsnum"> <br>
-					<input type="hidden" readonly="readonly" size="1px" id="paysdate">  <br>
-					<input type="hidden" readonly="readonly" size="1px" id="payedate"> <br><br>
-				</td>
-			</tr>
-			<tr align="right" style="border-top: none; border-bottom: none;" style="font-size:20px;">
-				<td id="payview" style="color: black; font-weight:600;">
-					금액 : <span id="payprice" style="color:#FF0040; font-size:25pt;"></span> 원
-				</td>
-			</tr>
-			<tr style="border-top: none; border-bottom: none;">
-				<td align="center">
-					<button onclick="ticketpay()" style="background-color: #FF0040; font-weight:600; color: white; height: 100%; width:100%; padding: 12px; font-size:20px;" >예매하기</button>
-				</td>
-			</tr>
-		</tbody>
+	<tbody align="center">
+		<tr>
+			<td rowspan="9"><br>
+				<div>
+					<h1>SCREEN</h1>
+					<br>
+				</div>
+				<div id="ticket"></div>
+			</td>
+		</tr>
+		
+		<tr style="font-size:18px;">
+			<td align="left" style="color: black; font-weight:600;">
+				&nbsp;영화제목 : <span id="paytitle"></span><br>
+			</td>
+		</tr>
+		<tr style="font-size:18px;">
+			<td align="left" style="color: black; font-weight:600;">
+				&nbsp;상영시간 : <span id="paytime"></span><br>
+			</td>
+		</tr>
+		<tr style="font-size:18px;">
+			<td align="left" style="color: black; font-weight:600;">
+				&nbsp;상영관 : <span id="paytheater"></span><br>
+			</td>
+		</tr>
+		<tr style="font-size:18px;">
+			<td align="left" style="color: black; font-weight:600;">
+				&nbsp;좌석 : <span id="payseat"></span>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-bottom: none;">
+				<input type="hidden" readonly="readonly" size="1px" id="payid"> <br>
+				<input type="hidden" readonly="readonly" size="1px" id="paymsnum"> <br>
+				<input type="hidden" readonly="readonly" size="1px" id="paysdate">  <br>
+				<input type="hidden" readonly="readonly" size="1px" id="payedate"> <br><br>
+			</td>
+		</tr>
+		<tr align="right" style="border-top: none; border-bottom: none;" style="font-size:20px;">
+			<td id="payview" style="color: black; font-weight:600;">
+				금액 : <span id="payprice" style="color:#FF0040; font-size:25pt;"></span> 원
+			</td>
+		</tr>
+		<tr style="border-top: none; border-bottom: none;">
+			<td align="center">
+				<button onclick="ticketpay()" style="background-color: #FF0040; font-weight:600; color: white; height: 100%; width:100%; padding: 12px; font-size:20px;" >예매하기</button>
+			</td>
+		</tr>
+	</tbody>
 </table>	
 </div>
