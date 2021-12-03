@@ -34,7 +34,7 @@
 var aid = sessionStorage.getItem("aid");
 
 $.ajax({
-	url:'http://localhost:3000/actordetail',
+	url:'http://18.117.250.219:3000/actordetail',
 	type:'get',
 	data:{ 'aid':aid },
 	success:function(data){
@@ -43,11 +43,14 @@ $.ajax({
 		$("#country").html( data.country );
 		$("#career").html( data.career );
 		 
-		vimg = $('<img>', {	'src' : './image/actor/'+aid+'.jpg'	});
+		vimg = "<img id='vvimg' src=./image/actor/"+aid+".jpg class=poster onerror="+'"this.src='+"'image/null.png'"+'">';
 		$(vimg).appendTo('.thumb-image');
 	},
 	error:function(){
 		alert('error');
 	}
+});
+$("vimg").on("error", function () {
+    $(this).attr("src", "image/null.png");
 });
 </script>

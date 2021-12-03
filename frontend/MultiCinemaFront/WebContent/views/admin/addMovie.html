@@ -22,36 +22,37 @@ $(function() {
 });
 </script>
 <div align="center">
-<table border="1">
-<tr>
-	<td>제목</td>
-	<td><input type="text" id="title" size="35"></td>
+<table><col width="150px;"><col width="950px;">
+<tr class="table table-striped table-hover">
+	<th>제목</th>
+	<td><input type="text" id="title" size="35" class="form-control" placeholder="제목을 입력해주세요."></td>
+</tr>
+<tr class="table table-striped table-hover" style="background:#EDECEB;">
+	<th>장르</th>
+	<td><input type="text" id="genre" size="35" class="form-control" placeholder="장르를 입력해주세요."></td>
+</tr>
+<tr class="table table-striped table-hover">
+	<th>내용</th>
+	<td><textarea id="contents" rows="3"cols="35" class="form-control" placeholder="&nbsp;&nbsp;내용을 입력해주세요."></textarea>
+</tr>
+<tr class="table table-striped table-hover" style="background:#EDECEB;">
+	<th>감독</th>
+	<td><input type="text" id="director" size="35" class="form-control" placeholder="감독을 입력해주세요."></td>
 </tr>
 <tr>
-	<td>장르</td>
-	<td><input type="text" id="genre" size="35"></td>
-</tr>
-<tr>
-	<td>내용</td>
-	<td><textarea id="contents" rows="3"cols="35"></textarea>
-</tr>
-<tr>
-	<td>감독</td>
-	<td><input type="text" id="director" size="35"></td>
-</tr>
-<tr>
-	<td>개봉날짜</td>
-	<td>
+	<th>개봉날짜</th>
+	<td align="center">
 	<div id="DatePicker"></div> 
-	<input type="hidden" id="odate" value="">
+	<input type="hidden" id="odate" value="" class="form-control">
 	</td>
 </tr>
 </table>
-<input type="button" value="등록" onclick="check()">
+<br>
+<input class="form-control" type="button" value="등록" onclick="check()" style="background-color: #585858; color: white; font-weight: 600; border-radius: 2px; padding: 5px; width: 72px; height: 42px;">
 <script type="text/javascript">
 function addMovie(){
 	$.ajax({
-		url:"http://localhost:3000/movie",
+		url:"http://3.138.157.37:3000/movie",
 		type:"post",
 		data:{ title:$("#title").val(), seq:0, genre:$("#genre").val(), content:$("#contents").val(), director:$("#director").val(), odate:$("#odate").val(), score:0},
 		success:function(resp){

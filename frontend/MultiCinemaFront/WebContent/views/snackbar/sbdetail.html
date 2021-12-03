@@ -39,13 +39,13 @@ getsbdetail();
 
 function getsbdetail(){
 	$.ajax({
-		url:'http://localhost:3000/snackbardetail',
+		url:'http://18.117.250.219:3000/snackbardetail',
 		type:"get",
 		data:{ "product":product },
 		success:function(sbdetail){
 			let str = "<tr>";
-			    str += "<td rowspan='4'><img src='./image/snackbar/" + sbdetail.product + ".png' width='400' height='350'>" + "</td>";
-			    str += "<td align='left' class='detail' colspan='2'><p style='font-size: 25px; font-weight: 600;'>" + sbdetail.product + "<hr></p></td>";
+			    str += "<td rowspan='4'><img src='./image/snackbar/" + sbdetail.product + ".png' width='400' height='350'  onerror="+'"this.src='+"'image/null.png'"+'">' + "</td>";
+			    str += "<td align='left' class='detail' colspan='2'><span style='font-size: 25px; font-weight: 600;'>" + sbdetail.product + "<hr></span></td>";
 			    str += "</tr>";
 			    str += "<tr><td width='20%' style='font-weight: 600;'>상품가격<hr></td><td align='left' class='detail' style='font-weight: 600;'>" + sbdetail.price + "원<hr></td><hr></tr>";
 			    str += "<tr><td style='font-weight: 600;'>구성품<hr></td><td align='left' class='detail' style='font-weight: 600; opacity: 0.5;'>" + sbdetail.content + "<hr></td></tr>";

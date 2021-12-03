@@ -193,14 +193,16 @@
 		white-space: nowrap;
 		text-overflow: ellipsis;
 		padding: 2px 0 0 1px;
-		font-size: 1.3333em;
-		font-weight: 400;
+		font-size: 1.12em;
+		font-weight: 600;
 		
 	}
 	
 	.movie-list ol li .rate-date {
 		/* overflow: hidden; */
 		padding: 10px 0 0 0;
+		font-size: 13px;
+		font-weight: 400;
 
 	}
 	
@@ -978,7 +980,7 @@ a, a:link {
 
 .movie_review_box .star_score_box {
 	float: left;
-	width: 320px;
+	width: 30%;
 	height: 88px;
 	background: #F8F8F8;
 	text-align: center;
@@ -1026,7 +1028,7 @@ a, a:link {
 
 .movie_review_box .review_write_box {
 	float: left;
-	width: 538px;
+	width: 60%;
 }
 
 .movie_review_box .review_write_box textarea {
@@ -1036,7 +1038,7 @@ a, a:link {
 
 .movie_review_box .btn_submit {
 	float: right;
-	width: 119px;
+	width: 10%;
 	height: 90px;
 	border: none;
 	margin: -1px -1px 0 0;
@@ -1062,7 +1064,7 @@ a, a:link {
 }
 
 .review_write_box textarea {
-	width: 144%;
+	width: 100%;
     line-height: 1.5; 
 	box-sizing: border-box;
 	padding: 13px 18px;
@@ -1239,138 +1241,3 @@ a, a:link {
 	background: rgba(0, 0, 0, 0.5);
 	overflow-y: scroll;
 }
- 
-/* 
-.dimBg {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background: #000;
-	opacity: .5;
-	filter: alpha(opacity=50);
-} 
-*/
-	/* 관람평 */
-/* 	
-	.movie-idv-story {
-		display: block;
-		position: relative;
-		min-height: 500px;
-	}
-	
-	.movie-idv-story ul li {
-		position: relative;
-		width: 100%;
-	}
-	
-	.movie-idv-story ul li .story-area {
-		display: block;
-		width: 100%;
-	}
-	
-	.movie-idv-story ul li .story-area .user-prof {
-		position: relative;
-		float: left;
-		width: 105px;
-		text-align: center;
-	}
-	
-	.movie-idv-story ul li .story-area .user-prof .prof-img {
-		width: 50px;
-		height: 50px;
-		border-radius: 50%;
-		margin: 0 auto 10px;
-		overflow: hidden;
-	}
-	
-	.movie-idv-story ul li .story-area .user-prof .user-id {
-		margin: 0;
-		width: 105px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		font-size: .9333em;
-		line-height: 1.1;
-	}
-	
-	.movie-idv-story ul li .type03 .story-area .story-box {
-		border-radius: 0 10px 10px 10px;
-		border: 1px solid #eaeaea;
-		background-color: #fff;
-	}
-	
-	.movie-idv-story ul li .story-area .story-box {
-		float:right;
-		position: relative;
-		width: calc(100% - 105px);
-		height: 84px;
-		padding: 0;
-	}
-	
-	.movie-idv-story ul li .type03 .story-area .story-box .story-wrap {
-		display: table;
-		width: 100%;
-		height: 84px;
-	}
-	
-	.movie-idv-story ul li .type03 .story-area .story-box .story-wrap .story-cont {
-		display: table-cell;
-		float: none;
-		width: 850px;
-		height: 84px;
-		vertical-align: middle;
-		padding-left: 30px;
-		text-align: left;
-		color: #666;
-	}
-	
-	.movie-idv-story ul li .story-area .story-box .story-wrap .story-cont {
-		padding: 0;
-	}
-	
-	.font-gblue {
-		color: #01738b!important;
-	}
-	
-	.movie-idv-story ul li .type03 .story-area .story-box .story-wrap .story-write {
-		display: table-cell;
-		vertical-align: middle;
-		text-align: center;
-	}
-	
-	.movie-idv-story ul li .type03 .story-area .story-box .story-wrap .story-write a {
-		width: 105px;
-		height: 24px;
-		color: #666;
-		text-decoration: none;
-	}
-	
-	.movie-idv-story ul li+li {
-		margin-top: 20px;
-	}
-	
-	.movie-idv-story ul li {
-		position: relative;
-		width: 100%;
-	}
-	
-	.movie-idv-story ul li .stroy-area {
-		display: block;
-		width: 100%;
-	}
-	
-	.movie-idv-story ul li .stroy-area .user-prof {
-		position: relative;
-		float: left;
-		width: 105px;
-		text-align: center;
-	}
-	
-	.movie-idv-story ul li .stroy-area .user-prof .prof-img {
-		width: 50px;
-		height: 50px;
-		border-radius: 50%;
-		margin: 0 auto 10px;
-		overflow: hidden;
-	} */

@@ -1,4 +1,17 @@
 <meta charset="UTF-8">
+
+<style>
+.mtitle:hover{
+	background-color: #585858;;
+	color: white;
+}
+.mtime:hover{
+	background-color: #585858;;
+	color: white;
+}
+
+
+</style>
 <script type="text/javascript">
 $.datepicker.setDefaults({
     dateFormat: 'yyyy-mm-dd',
@@ -14,7 +27,7 @@ $.datepicker.setDefaults({
  	 // minDate: "+1D",
  	minDate: "0",
  	  onSelect: function (dateText, inst) {
- 			$('#tkdateR').val(dateText.substring(4,14)); 
+ 			$('#tkdateR').val(dateText.substring(4,14));
  			
  			$.ajax({
  				url : "http://localhost:3000/mtitle",
@@ -37,7 +50,7 @@ $.datepicker.setDefaults({
  	 					$("#mtitle").append(first);
  	 					
  				 		for (i = 0; i < list.length; i++) {
- 							let str = "<option style='font-size:17px; height: 22pt;'>"+list[i].title+ "</option>";
+ 							let str = "<option class='mtitle' style='font-size:17px; height: 22pt;'>"+list[i].title+ "</option>";
  							$("#mtitle").append(str);  
  						}
  					}
@@ -97,8 +110,8 @@ $(document).ready(function() {
 				let first = "<option style='background:#EDECEB; font-weight:600; font-size:20px; height: 24pt;'>"+ '시간 선택' +"</option>";
 	 			$("#mtime").append(first);
 					for (i = 0; i < list.length; i++) {
-						if ( list[i].sdate >= day && dayplus1 > list[i].sdate && list[i].sdate > time) { // 상영 시간 -> 선택한 날짜 && 다음날 00시 && 현재날짜
-							let mdate = "<option style='font-size:18px; height: 22pt;' value='"+list[i].msnum+"'>"+list[i].sdate.substring(11, 16) + ' ~ ' + list[i].edate.substring(11, 16)+ "</option>";
+						if ( list[i].sdate.substring(0,10) == day && dayplus1 > list[i].sdate && list[i].sdate > time) { // 상영 시간 -> 선택한 날짜 && 다음날 00시 && 현재날짜
+							let mdate = "<option class='mtime' style='font-size:18px; height: 22pt;' value='"+list[i].msnum+"'>"+list[i].sdate.substring(11, 16) + ' ~ ' + list[i].edate.substring(11, 16)+ "</option>";
 							$("#mtime").append(mdate);
 						}
 					}
@@ -226,6 +239,15 @@ function ticketpay() {
 	}
 }
 
+
+function colorChange() {
+  var color = ["#FC5C7D", "#6A82FB", "#38ef7d", "#fffbd5", "#b20a2c", "#CAC531"];
+
+  var num = Math.floor(Math.random() * color.length);
+  var bodyTag = document.getElementById("colorCont");
+  bodyTag.style.backgroundColor = color[num];
+}
+
 </script>
 <div align="center" ">
 <table width="1050" height="500" style="border: 1px solid #585858;">
@@ -248,10 +270,10 @@ function ticketpay() {
 		</th>
 		
 		<th align="right">
-			<select id="mtitle" class="list-group" size="10"  style="height:238px; width: 280px; text-align:center;">
+			<select id="mtitle" class="list-group" size="10"  style="height:238px; width: 280px; text-align:center;"
+			>
 			</select>
 		</th>
-		
 		<th align="center">
 			<select id="mtime" class="list-group" size="10"  style="height:238px; width: 280px; text-align:center;">
 			</select>

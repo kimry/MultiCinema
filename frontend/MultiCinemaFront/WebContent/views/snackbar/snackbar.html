@@ -66,7 +66,7 @@ getsnackbar('drink');
 
 function getsnackbar(sort){
 	$.ajax({
-		url:'http://localhost:3000/snackbarlist',
+		url:'http://18.117.250.219:3000/snackbarlist',
 		type:"get",
 		data:{ category:sort},
 		success:function(list){
@@ -74,10 +74,10 @@ function getsnackbar(sort){
 			for(i = 0; i < list.length; i++){
 				let str = "<td>";
 				    str += "<button type='button' id='" + list[i].product + "' class='snack' onClick='menu_click(this.id)' style='background-color: white'>";
-					str += "<img src='./image/snackbar/" + list[i].product + ".png' width='250' height='200'>" + "<br>";
-					str += "<p class='sbbold'>" + list[i].product + "</p>";
-				    str += "<p style='font-size: 10px; opacity: 0.5;'>" + list[i].content + "</p>";
-				    str += "<p style='font-weight: 900'>" + list[i].price + "원" + "</p>";
+					str += "<img src='./image/snackbar/" + list[i].product + ".png' width='250' onerror="+'"this.src='+"'image/null.png'"+'">' + "<br>";
+					str += "<span class='sbbold'>" + list[i].product + "</span><br>";
+				    str += "<span style='font-size: 10px; opacity: 0.5;'>" + list[i].content + "</span><br><br>";
+				    str += "<span style='font-weight: 900'>" + list[i].price + "원" + "</span>";
 				    str += "</button>";	
 				    str += "</td>";
 				

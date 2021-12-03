@@ -22,13 +22,13 @@ $(function() {
 });
 </script>
 <div align="center">
-<table border="1">
-<tr>
-	<td>제목</td>
-	<td><input type="text" id="title" size="35"></td>
+<table><col width="150px;"><col width="950px;">
+<tr class="table table-striped table-hover">
+	<th>제목</th>
+	<td><input type="text" id="title" size="35" class="form-control" placeholder="제목을 입력해주세요."></td>
 </tr>
-<tr>
-	<td>상영관</td>
+<tr class="table table-striped table-hover" style="background:#EDECEB;">
+	<th>상영관</th>
 	<td>
 	<select id="theater">
 		<option value="1" selected>1관</option>
@@ -41,34 +41,34 @@ $(function() {
 	</td>
 </tr>
 <tr>
-	<td>상영날짜</td>
+	<th>상영날짜</th>
 	<td>
 	<div id="msDatePicker"></div>
-	<input type="hidden" id="date" value="">
+	<input type="hidden" id="date" value="" class="form-control">
 	</td>
 </tr>
-<tr>
-	<td>상영시간</td>
+<tr class="table table-striped table-hover" style="background:#EDECEB;">
+	<th>상영시간</th>
 	<td>
 	<select id="sh"></select>:<select id="sm"></select>
 	</td>
 </tr>
-<tr>
-	<td>종료시간</td>
+<tr class="table table-striped table-hover">
+	<th>종료시간</th>
 	<td>
 	<select id="eh"></select>:<select id="em"></select>
 	</td>
 </tr>
-<tr>
-	<td>가격</td>
+<tr class="table table-striped table-hover" style="background:#EDECEB;">
+	<th>가격</th>
 	<td>
-	<input type="hidden" value="11000" id="price">
-	11000원
+	<span style="text-decoration: none; font-weight: bold; font-size:18px;"><input type="hidden" value="11000" id="price" class="form-control">
+	11000원</span>
 	</td>
 </tr>
 </table>
-
-<input type="button" value="등록" onclick="check()">
+<br>
+<input class="form-control" type="button" value="등록" onclick="check()" style="background-color: #585858; color: white; font-weight: 600; border-radius: 2px; padding: 5px; width: 72px; height: 42px;">
 
 <script type="text/javascript">
 for(var i=0;i<=23;i++){
@@ -96,7 +96,7 @@ for(var i=0;i<60;i++){
 function addMS(){
 	alert($("#date").val()+" "+$("#sh").val()+ ":" + $("#sm").val());
 	$.ajax({
-		url:"http://localhost:3000/ms",
+		url:"http://3.138.157.37:3000/ms",
 		type:"post",
 		data:{ msnum:0, title:$("#title").val(), theater:$("#theater").val(), sdate:$("#date").val()+" "+$("#sh").val()+ ":" + $("#sm").val(), edate:$("#date").val()+" "+$("#eh").val()+ ":" + $("#em").val(),price:$("#price").val()},
 		success:function(resp){

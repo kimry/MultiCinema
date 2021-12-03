@@ -1,12 +1,12 @@
 <meta charset="UTF-8">
 <div align="center">
-<table border="1">
+<table class="table table-striped table-hover">
 <tr>
-	<td>상품명</td>
-	<td><input type="text" id="product" size="35"></td>
+	<th>상품명</th>
+	<td><input type="text" id="product" size="35" class="form-control" placeholder="상품명을 입력해주세요."></td>
 </tr>
 <tr>
-	<td>카테고리</td>
+	<th>카테고리</th>
 	<td>
 	<select id="category">
 		<option value="combo" selected>combo<option>
@@ -16,15 +16,15 @@
 	</td>
 </tr>
 <tr>
-	<td>상품설명</td>
-	<td><textarea id="contents" cols=37 rows=10></textarea></td>
+	<th>상품설명</th>
+	<td><textarea id="contents" cols=37 rows=10 class="form-control" placeholder="&nbsp;&nbsp;상품설명을 입력해주세요."></textarea></td>
 </tr>
 <tr>
-	<td>가격</td>
-	<td><input type="text" id="price" size="35"></td>
+	<th>가격</th>
+	<td><input type="text" id="price" size="35" class="form-control" placeholder="가격을 입력해주세요."></td>
 </tr>
 </table>
-<input type="button" value="등록" onclick="check()">
+<input class="form-control" type="button" value="등록" onclick="check()" id="bbsanswer" style="background-color: #585858; color: white; font-weight: 600; border-radius: 2px; padding: 5px; width: 72px; height: 42px;">
 
 <script type="text/javascript">
 function addProduct(){

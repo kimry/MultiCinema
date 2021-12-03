@@ -3,42 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style type="text/css">
+.tdl{
+   width: 20%;
+}
+</style>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<h1>글추가</h1>
-
-<div align="center">
+<div align="center" style="margin-top: 60px">
 
 <form id="frm">
 
 <div align="center">
 	<div style="width: 1000px">
 
-		<table class="table table-bordered">
+		<table class="table table-striped">
 		<col width="200"><col width="400">
 		
 		<tr>
-			<th class="table-primary">아이디</th>
+			<th class="tdl">아이디</th>
 			<td>
-				<input type="text" id="id" name="id" size="50px" readonly="readonly">
+				<input type="text" class="form-control" id="id" name="id" size="50px" readonly="readonly">
 			</td>
 		</tr>
 		
 		<tr>
-			<th class="table-primary">제목</th>
+			<th class="tdl">제목</th>
 			<td>
-				<input type="text" class="form-control" name="title" size="50px">
+				<input type="text" class="form-control" name="title" size="50px" placeholder="제목을 입력해주세요.">
 			</td>
 		</tr>
 		
 		<tr>
-			<th class="table-primary">내용</th>
+			<th class="tdl">내용</th>
 			<td>
-				<textarea class="form-control" rows="10" name="content"></textarea>
+				<textarea class="form-control" rows="10" name="content" placeholder="내용을 입력해주세요."></textarea>
 			</td>
 		</tr>
 		<tr>

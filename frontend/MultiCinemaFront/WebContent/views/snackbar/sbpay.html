@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.price{
+    color: white;
+}
+</style>
 </head>
 <body>
 <div align="center" style="margin-top: 80px;">
@@ -19,13 +24,13 @@
            <td>
               <table border="1" style="width: 100%; height: 40%;">
                      <tr style="margin: 100px">
-                         <td style="background-color: #585858; color: white">
-                             <p><span style="float: left; margin-left: 10px; font-weight: 600;">상품금액</span><span style="float: right; margin-right: 10px; font-weight: 600;" id="iprice"></span></p>
+                         <td class="price" style="background-color: #585858;">
+                             <span style="float: left; margin-left: 10px; font-weight: 600;">상품금액</span><span style="float: right; margin-right: 10px; font-weight: 600;" id="iprice"></span>
                          </td>
                      </tr>
                      <tr>
-                         <td style="background-color: #585858; color: white">
-                             <p><span style="float: left; margin-left: 10px; font-weight: 600;">결제금액</span><span style="float: right; margin-right: 10px; font-weight: 600;" id="pprice"></span></p>
+                         <td class="price" style="background-color: #585858;">
+                             <span style="float: left; margin-left: 10px; font-weight: 600;">결제금액</span><span style="float: right; margin-right: 10px; font-weight: 600;" id="pprice"></span>
                          </td>
                      </tr>
                      <tr>
@@ -49,9 +54,9 @@ var p_count = params.count;
 
 var p_price = params.price;
 
-var str2 = "<img src='./image/snackbar/" + p_name + ".png' width='300' height='250'>";
-    str2 += "<br><br><p style='font-size: 25px; font-weight: 900;'>" + p_name + "</p>";
-    str2 += "<p style='font-size: 15px; font-weight: 600;'>수량 &nbsp;&nbsp;&nbsp;&nbsp;" + p_count + "개</p>";
+var str2 = "<img src='./image/snackbar/" + p_name + ".png' width='300' height='250' onerror="+'"this.src='+"'image/null.png'"+'">';
+    str2 += "<br><br><span style='font-size: 25px; font-weight: 900;'>" + p_name + "</span>";
+    str2 += "<br><br><span style='font-size: 15px; font-weight: 600;'>수량 &nbsp;&nbsp;&nbsp;&nbsp;" + p_count + "개</span>";
 $("#product").append(str2);
 
 var str3 = p_price + "원";

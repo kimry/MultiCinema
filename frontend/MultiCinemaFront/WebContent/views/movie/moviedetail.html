@@ -4,7 +4,6 @@ $("#mscrollbar").mouseover(function(){$(this).css("overflow","auto")});
 $("#mscrollbar").mouseleave(function(){$(this).css("overflow","hidden")});
 
 $(document).ready(function(){
-
 	$(".btn_close").click(function(event){
 		$(".layer_wrap").removeClass("active");
 		$(".dim").removeClass("active");
@@ -33,7 +32,7 @@ $(document).ready(function(){
 	    this.parentNode.classList.add('active');
 	  });
 	}
-	
+	$(".score_info em").text(1);
 });
 </script>
 
@@ -177,7 +176,7 @@ $(document).ready(function(){
 					</strong>
 					<div class="star_info">
 						<div class="star_rate">
-							<button type="button" class="star">
+							<button type="button" class="star on">
 								<em>별1점</em>
 							</button>
 							<button type="button" class="star">
@@ -238,7 +237,7 @@ var seq = params.seq;
 let actorid;
 
 $.ajax({
-	url:'http://localhost:3000/getActor',
+	url:'http://18.117.250.219:3000/getActor',
 	type:'get',
 	data: {'seq':seq},
 	success:function(list){
@@ -262,7 +261,7 @@ if(user.auth!=0){
 
 function addFilmoActor(){
 	$.ajax({
-		url:'http://localhost:3000/filmo',
+		url:'http://18.117.250.219:3000/filmo',
 		type:'post',
 		data: {'fseq':seq, 'Actor':$("#filmoActor").val()},
 		success:function(msg){
@@ -291,7 +290,7 @@ function moveActor(aid) {
 $(document).ready(function () {
 
 $.ajax({
-	url:'http://localhost:3000/moviedetail',
+	url:'http://18.117.250.219:3000/moviedetail',
 	type:'get',
 	data:{ 'seq':seq },
 	success:function(data){
@@ -329,8 +328,7 @@ $.ajax({
 			$(".dim").addClass("active");
 		});
 		
-		
-		vimg = $('<img>', {	'src' : './image/'+seq+'.jpg'	});
+		vimg = "<img id='vvimg' src=./image/"+seq+".jpg class=poster onerror="+'"this.src='+"'image/null.png'"+'">';
 		t0_img = $('<img>', {	'src' : './image/'+seq+'_0.jpg'	});
 		t1_img = $('<img>', {	'src' : './image/'+seq+'_1.jpg'	});
 		t2_img = $('<img>', {	'src' : './image/'+seq+'_2.jpg'	});
@@ -350,7 +348,7 @@ $.ajax({
 
 function reviewList(){
     $.ajax({
-        url : 'http://localhost:3000/reviewlist',
+        url : 'http://18.117.250.219:3000/reviewlist',
         type : 'get',
         data : {'seq':seq},
         success : function(data){
@@ -379,7 +377,7 @@ function reviewList(){
 //댓글 등록
 function reviewInsert(){
     $.ajax({
-        url : 'http://localhost:3000/reviewinsert',
+        url : 'http://18.117.250.219:3000/reviewinsert',
         type : 'post',
         data : {'seq':seq, 'content':$("#txtComment").val(), 'id':user.id, 'score':Number($(".score_info em").text())},
         success : function(data){
@@ -387,7 +385,10 @@ function reviewInsert(){
                  location.reload(); //댓글 작성 후 댓글 목록 reload
             	
             }
-        }
+        },
+        error:function(){
+			alert('관람평을 이미 작성했습니다.');
+		}
     });
 }
  
@@ -409,7 +410,7 @@ function reviewUpdateProc(rnum){
     var updateContent = $('[name=content_'+rnum+']').val();
     
     $.ajax({
-        url : 'http://localhost:3000/reviewupdate',
+        url : 'http://18.117.250.219:3000/reviewupdate',
         type : 'post',
         data : {'content' : updateContent, 'rnum' : rnum},
         success : function(data){
@@ -422,7 +423,7 @@ function reviewUpdateProc(rnum){
 //댓글 삭제 
 function reivewDelete(rnum){
     $.ajax({
-        url : 'http://localhost:3000/reviewdelete/'+rnum,
+        url : 'http://18.117.250.219:3000/reviewdelete/'+rnum,
         type : 'post',
         success : function(data){
             if(data == 1) reviewList(seq);  //댓글 삭제후 목록 출력 
@@ -436,5 +437,4 @@ function reivewDelete(rnum){
 $(document).ready(function(){
     reviewList(); //페이지 로딩시 댓글 목록 출력 
 });
- 
 </script>
