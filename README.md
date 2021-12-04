@@ -35,9 +35,9 @@ With Corona시대에 맞춰 지금까지 억눌려 왔던 시민들의 야외 �
 * 로그인 / 회원가입
 * 티켓 구매
 * 음식 구매
-* 영화 정보 및 리뷰 - 미구현
-* 배우 정보 - 미구현
-* Q&A 게시판 - 미구현
+* 영화 정보 및 리뷰
+* 배우 정보
+* 고객센터
 * 관리자페이지
 * 마이페이지
 * 카카오페이 결제
@@ -45,7 +45,36 @@ With Corona시대에 맞춰 지금까지 억눌려 왔던 시민들의 야외 �
 
 # DB ERD
 
+![KakaoTalk_20211129_160903674](README.assets/KakaoTalk_20211129_160903674.png)
+
 # 페이지 소개
+
+![1](README.assets/1.png)
+
+![2](README.assets/2.png)
+
+![3](README.assets/3.png)
+
+![4](README.assets/4.png)
+
+![5](README.assets/5.png)
+
+![6](README.assets/6.png)
+
+![7](README.assets/7.png)
+
+![8](README.assets/8.png)
+
+![9](README.assets/9.png)
+
+![10](README.assets/10.png)
+
+![11](README.assets/11.png)
+
+![12](README.assets/12.png)
+
+![13](README.assets/13.png)
 
 # 성과
 
+* spring boot와 RESTful api를 적용한 첫번째 프로젝트였고 외부 open api나 NAVER Cloud를 이용한 AI api를 사용해 볼 수 있었기 때문에 개인적으로 많은 도움이 되었다고 생각하고 조원들이 각자의 역할을 잘 수행해 냈기 때문에 시간 대비 만족스로운 결과물을 만들어 냈다고 생각한다.
